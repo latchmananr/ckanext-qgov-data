@@ -1,0 +1,30 @@
+## OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+## Python byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.swp
+*.swo
+
+## Python eggs
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Build scripts and config
+*.sh
+*.ini
+
+## Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+pip-requirements-local.txt
