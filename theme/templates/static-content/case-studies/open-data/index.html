@@ -1,0 +1,39 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Open Data case study | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Case studiess') }}</a></li>
+    <li class="last-child">{{ _('Open Data case study') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Open Data case study') }}</h1>
+    <h2>The data</h2>
+	<p>State Library of Queensland uses Queensland open data to populate and validate Queensland addresses entered in SLQ’s online membership registration form.</p>
+	<h2>The data</h2>
+	<p>SLQ membership registration uses the Property Location Service open data provided by the Department of Natural Resources and Mines. By using the Residential Address search feature, new members can search and find their address from the open data set. This then automatically populates the correct fields in the registration form.</p>
+	<h2>The user</h2>
+	<p>The use of open data saves new members time as their address is automatically entered into the online form. Errors in data entry are therefore minimised.</p>
+	<h2>The benefits</h2>
+	<p>The Property Location Service data ensures that residential address contact information in entered correctly by users, increasing data integrity and minimising user entered errors. </p>
+	<p>Data collected using this open data set is also published as an open data set. The <em>Library membership (State Library of Queensland)</em> set includes suburb and postcode data.</p>
+	<p><a href="http://patron.slq.qld.gov.au/?view=1">Registration form</a>
+	<br /><a href="mailto:collectionaccess@slq.qld.gov.au">Email Collection Access</a> for more information.</p>
+
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+	<script type="text/javascript"><!--
+		(function( $ ) {
+			'use strict';
+
+			$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+		}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

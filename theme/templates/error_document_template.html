@@ -1,0 +1,34 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ gettext('Error %(error_code)s', error_code=c.code[0]) }}{% endblock %}
+
+{% block primary %}
+	{% if c.code[0] == '404' %}
+	<h1>The page cannot be found</h1>  
+	<p>You can:</p>
+	<ul>
+		<li>return to the <a href="/">home page</a> and look for links to the information;</li>
+		<li>use the <a href="#search-query">search input</a> in the top right hand corner to search across Queensland Government {{ h.portal_type('lss') }}; or</li>
+		<li>double check the address.</li>
+	</ul>
+	{% elif c.code[0] == '403' %}
+	<h1>Permission error</h1>
+	<p>The page or resource you were trying to reach is absolutely forbidden for some reason. Please <a href="mailto:onlineproducts@smartservice.qld.gov.au">send us an email</a> and let us know about this issue.</p>
+	{% elif c.code[0] == '500' %}
+	<h1>Unexpected server error</h1>
+	<p>Please <a href="mailto:onlineproducts@smartservice.qld.gov.au">send us an email</a> and let us know about this error.</p>
+	{% else %}
+	<h1>The resource you have requested is currently unavailable. </h1>
+	<p>Please try again later or <a href="/dataset?q=">search for other {{ h.portal_type('lss') }}</a>.</p>
+	{% endif %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block flash %}
+  {# eat the flash messages caused by the 404 #}
+  {% set flash_messages = h.flash.pop_messages() %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}

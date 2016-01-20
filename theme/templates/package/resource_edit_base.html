@@ -1,0 +1,136 @@
+{% extends "package/base.html" %}
+
+{% set logged_in = true if c.userobj else false %}
+{% set res = c.resource %}
+
+{% block breadcrumb_content_selected %}{% endblock %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  {% if res %}
+    <li>{% link_for h.resource_display_name(res)|truncate(30), controller='package', action='resource_read', id=pkg.name, resource_id=res.id %}</li>
+    <li class="active"><a href="">{{ _('Edit') }}</a></li>
+  {% endif %}
+{% endblock %}
+
+{% block content_action %}
+  {% link_for _('All resources'), controller='package', action='resources', id=pkg.name, class_='btn', icon='arrow-left' %}
+  {% if res %}
+    {% link_for _('View resource'), controller='package', action='resource_read', id=pkg.name, resource_id=res.id, class_='btn', icon='eye-open' %}
+  {% endif %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('resource_edit', _('Edit resource'), id=pkg.name, resource_id=res.id) }}
+  {% if 'datapusher' in g.plugins %}
+    {{ h.build_nav_icon('resource_data', _('DataStore'), id=pkg.name, resource_id=res.id) }}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1 class="hide-heading">{% block form_title %}{{ _('Edit resource') }}{% endblock %}</h1>
+
+  {% if data['Used in data-driven application'] and data['Used in data-driven application'] == 'YES' %}
+  <div class="status info">
+      <h2>Data-driven application</h2>
+      <p>This resource is used in a data-driven application and cannot be deleted but can be updated. Please <a href="mailto:onlineproducts@smartservice.qld.gov.au">contact the portal administrator</a> for further information.</p>
+  </div>
+  {% endif %}
+  {% block form %}{% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'package/snippets/resource_info.html', res=res %}
+{% endblock %}
+
+{%- block scripts %}
+<script type="text/javascript"><!--
+  (function( $ ) {
+    'use strict';
+
+    var sizeField = $('#field-size'),
+      fileSize = '',
+      fileNum,
+      fileText,
+      fileBytes,
+      fileMultiplier,
+      override;
+
+
+    // on focus lost 
+    $('#field-size').bind( 'change', function() {
+      sizeField[ 0 ].setCustomValidity( '' );
+      if ($('#field-size').val().length >= 0) verifyInput();
+    });
+
+    function verifyInput() {
+      //get input - remove spaces and capitalise
+      fileSize = $('#field-size').val().replace(/ /g,'').replace(/,/g,'').toUpperCase();
+      $('#field-size').val(fileSize);
+      if (!RegExp(/^\d+$/).test(fileSize)) fileSizeCat();
+    }
+
+    function fileSizeCat() {
+      if (RegExp(/^\d*\.?\d+[A-Za-z]*$/).test(fileSize)){
+        fileNum = fileSize.match(/\d*\.?\d*/);
+        fileText = fileSize.match(/[A-Za-z]+/);
+
+        if ( fileText == 'TB' || fileText == 'T' || fileText == 'TERABYTES' || fileText == 'TBS' || fileText == 'TIB' ) { 
+          fileMultiplier = 1099511627776;
+        } else if ( fileText == 'GB' || fileText == 'G' || fileText == 'GIGABYTES' || fileText == 'GIG' || fileText == 'GBS' || fileText == 'GIB'  ) { 
+          fileMultiplier = 1073741824;
+        } else if ( fileText == 'MB' || fileText == 'M' || fileText == 'MEGABYTES' || fileText == 'MBS' || fileText == 'MIB' ){
+          fileMultiplier = 1048576;
+        } else if ( fileText == 'KB' ||fileText == 'K' || fileText == 'KILOBYTES' || fileText == 'KBS' || fileText == 'KIB'  ) { 
+          fileMultiplier = 1024;
+        } else {
+          sizeField[ 0 ].setCustomValidity( 'Must be a valid filesize format (e.g. 123, 1.2KB, 2.5MB)' );
+          return;
+        }
+        fileBytes = parseInt(fileNum * fileMultiplier);
+        $('#field-size').val(fileBytes);
+      } else {
+        sizeField[ 0 ].setCustomValidity( 'Must be a valid filesize format' );
+      }
+    }
+
+    $( '#field-expiration-date' ).bind( 'change', function() {
+ 
+        var datePattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/,
+            dateField = $( this ),
+            value = dateField.val()
+        ;
+     
+        // if there is no value
+        if ( value === '' ) {
+            // clear the custom error
+            dateField[ 0 ].setCustomValidity( '' );
+            // required field validation will kick in
+     
+        // test if value matches pattern
+        } else if ( datePattern.test( value )) {
+            // valid
+            dateField[ 0 ].setCustomValidity( '' );
+        } else {
+            // invalid
+            dateField[ 0 ].setCustomValidity( 'Must be in dd/mm/yyyy format' );
+        }
+    });
+
+    $( '#article' ).on('click', ".btn-danger", function () {
+      {% if data and data.id %}
+      if ( '{{ h.data_driven_application(data.id) }}' === 'NO' && $( this ).text() == 'Remove' ) {
+        $( '.icon-cloud-upload' ).parent().hide();
+        $( '#field-image-upload' ).hide();
+      }
+      {% endif %}
+    });
+
+    $( '#field-expiration-date' ).datepicker({ dateFormat: 'dd/mm/yy' });
+    $( '#field-last-modified' ).val($.datepicker.formatDate('yy-mm-dd', new Date()));
+
+  }( jQuery ));
+  // --></script>
+  {{ super() }}
+  {% resource 'vendor/fileupload' %}
+{% endblock -%}

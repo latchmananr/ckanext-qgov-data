@@ -1,0 +1,21 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Thank you") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li class="last-child">{{ _('Thank you') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Thank you') }}</h1>
+    {% trans %}
+        <p>Thank you for contacting the Queensland Government. If you have  provided your email address, you will receive a response within 24 hours (workdays only).</p>
+        <p>For further questions, please contact Smart Service Queensland on 13 QGOV  (13 74 68) between 8am and 6pm (AEST) Monday to Friday (not  including public holidays) or fax 1300 300 768.</p>
+        <p>If you are outside Australia, call +61 7 3405 0985 (+10 hours UTC) or fax +61 7 3405 0965.</p>
+        <p>Unsolicited advertising and inappropriate emails will not be responded to and are filed for legal purposes.    </p>
+        <p>Read  the <a href="//www.qld.gov.au/legal/privacy/">Queensland Government privacy statement</a> for information about privacy and security.</p>
+        <p>&nbsp;</p>
+    {% endtrans %}
+{% endblock %}
+
+{%- block scripts %}{% endblock -%}

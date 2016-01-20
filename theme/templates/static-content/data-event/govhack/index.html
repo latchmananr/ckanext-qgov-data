@@ -1,0 +1,45 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("GovHack") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('Events') }}</a></li>
+    <li class="last-child">{{ _('GovHack') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('GovHack') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+        <ul id="flex-grid">
+            <li class="d1">
+                <h2><a href="/static-content/data-event/govhack/2015"><span class="link-text">GovHack 2015 </span>
+                        <img src="/assets/images/events/govhack-2015-thumb.jpg" alt="" />
+                    </a></h2>
+                    <p>Read more about the 2015 Queensland GovHack winners.</p>
+                </li>
+                <li class="d1"><h2><a href="/static-content/data-event/govhack-2014">
+                    <span class="link-text">GovHack 2014 </span>
+                    <img src="/assets/images/events/govhack-2014-thumb.jpg" alt="" />
+                    </a></h2>
+                    <p>In July 2014 people came together to unlock the potential of data at GovHack. The winner for best use of Queensland Government Data was SocialTest.</p>
+                </li>
+        </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-event-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/data-event"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}
+
+{% block aside %}{% endblock %}

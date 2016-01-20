@@ -1,0 +1,84 @@
+{% extends "user/edit_base.html" %}
+
+{% set user = c.userobj %}
+
+{% block breadcrumb_content %}
+  <li class="active"><a href="{{ h.url_for(controller='user', action='dashboard') }}">{{ _('Dashboard') }}</a></li>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    {% block page_header %}
+      <header class="module-content page-header hug">
+        <ul class="nav nav-tabs">
+          {{ h.build_nav_icon('user_dashboard', _('News feed')) }}
+          {{ h.build_nav_icon('user_dashboard_datasets', _('My ' + h.portal_type('lss'))) }}
+        </ul>
+      </header>
+    {% endblock %}
+    <div class="module-content">
+      {% if self.page_primary_action() | trim %}
+        <div class="page_primary_action">
+          {% block page_primary_action %}{% endblock %}
+        </div>
+      {% endif %}
+      {% block primary_content_inner %}
+        <div data-module="dashboard">
+          {% snippet 'user/snippets/followee_dropdown.html', context=c.dashboard_activity_stream_context, followees=c.followee_list %}
+          <h2 class="page-heading">
+            {% block page_heading %}
+              {{ _('News feed') }}
+            {% endblock %}
+            <small>{{ _("Activity from items that I'm following") }}</small>
+          </h2>
+          {% block activity_stream %}
+            {{ c.dashboard_activity_stream }}
+          {% endblock %}
+        </div>
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block aside %}
+<div class="aside">
+    {% block secondary_content_inner %}
+      <h2 class="heading">{{ user.display_name }}
+        <small>({% link_for _('edit profile'), controller='user', action='edit', id=user.name %})</small>
+      </h2>
+      <div class="nums">
+        <dl>
+          <dt>{{ _('Username') }}</dt>
+          <dd>{{ user.name }}</dd>
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt>{{ _('Email (private)') }}</dt>
+            <dd>{{ user.email }}</dd>
+          </dl>
+        {% endif %}
+        <dl>
+          <dt>{{ _('User since') }}</dt>
+          <dd>{{ h.render_datetime(user.created) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _('State') }}</dt>
+          <dd>{{ user.state }}</dd>
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt class="key">{{ _('Private API key') }}</dt>
+            <dd class="value"><code>{{ user.apikey }}</code></dd>
+          </dl>
+        {% endif %}
+        </div>
+      {% if c.is_myself == false %}
+        <div class="follow_button">
+          {{ h.follow_button('user', user.id) }}</li>
+        </div>
+      {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}

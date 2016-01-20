@@ -1,0 +1,53 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Using multiple soil datasets to inform client decision-making | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Case studiess') }}</a></li>
+    <li class="last-child">{{ _('Using multiple soil datasets to inform client decision-making') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Using multiple soil datasets to inform client decision-making') }}</h1>
+    <h2>The data</h2>
+	<p>The Queensland Government,  through the <a href="/">Open Data portal</a>, has made  available a range of soil and mapping datasets in GIS (Geographic Information System)  format.</p>
+	<h2>The user</h2>
+	<p><a href="http://o-2.com.au/">O2 Environment + Engineering</a>,  a specialist provider of soil and water consulting services to Queensland’s  mining, gas, infrastructure and development industries, accesses the soil and  mapping datasets to complete environmental assessments on behalf of their  clients.</p>
+	<h2>The business benefit</h2>
+	<p><a href="http://o-2.com.au/">O2 Environment + Engineering</a> Senior Soil Scientist, Jon Walton, describes these datasets as being fundamental  and critical to the assessments he makes for his firm’s clients. His soil  assessments support strategic investment and development decision-making.</p>
+	<p>The government’s Open Data website  fulfils his requirement for quick and reliable access to this information. As  well as soil data, Jon uses the Open Data website to download the latest  digital cadastral database (DCDB) information compiled by the government.  Continued and improved support for the provision of soil data on the Queensland  Government’s <a href="/">Open Data website</a> are  essential from Jon’s perspective.</p>
+	<h2>Complementary information sources</h2>
+	<p>As well as accessing datasets through the <a href="/">Open Data website</a>, Jon regularly approaches  Soil and Land Resources staff from the Queensland Department of Science,  Information Technology, Innovation and the Arts (DSITIA) for soil polygons,  soil site data and soil profile descriptions. These are usually provided as  Microsoft Access database files or in Adobe’s Portable Document Format (PDF).</p>
+	<p>Jon also regularly downloads PDF copies of reports and maps  from the Queensland Government’s <a href="https://www.qld.gov.au/environment/library/">Environment, Land and Water  library catalogue</a>.
+	</p>
+{% endblock %}
+
+{% block aside %}
+    <div class="aside">
+    	<div class="figure">
+		    <blockquote class="pull-quote"><p>Quick, reliable access to soil datasets  is critical in my day to day work.</p></blockquote>
+		    <div class="figcaption"><img style="background: none repeat scroll 0 0 #f9f9f9; background: none repeat scroll 0 0 #f9f9f9; float: right; margin:1em;" src="/assets/images/case-studies/multiple-soil-datasets-jon-walton.png" alt="" /><p><strong>Jon Walton</strong> <br/>Senior Soil Scientist,<br />  O2 Environment +  Engineering</p></div>
+		</div>
+    </div>
+
+
+    <div class="aside">
+    	<img src="/assets/images/case-studies/multiple-soil-datasets.png" alt="" />
+    	<p>An engineer making soil assessments</p>
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+	<script type="text/javascript"><!--
+		(function( $ ) {
+			'use strict';
+
+			$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+		}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

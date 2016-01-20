@@ -1,0 +1,69 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("For developers") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li class="last-child">{{ _('For developers') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('For developers') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+            <ul id="flex-grid">
+                <li class="d1"><h2><a href="/dataset/">
+                        <span class="link-text">Datasets</span>
+                        <img src="/assets/images/qld-globe-thm.jpg" alt="" />
+                    </a></h2>
+                    <p>Find Queensland Government datasets that you can browse, learn about and download.</p>
+                </li>
+                <li class="d1"><h2><a href="/for-developers/register-your-app/">
+                        <span class="link-text">Register your app</span>
+                        <img src="/assets/images/register-your-app.jpg" alt="" />
+                    </a></h2>
+                    <p>Register your apps (must use Queensland Government data).</p>
+                </li>
+                <li class="d1"><h2><a href="/maps-geospatial/qld-globe">
+                        <span class="link-text">Queensland Globe</span>
+                        <img src="/assets/images/information-queensland.jpg" alt="" />
+                    </a></h2>
+                    <p>View geospatial and related data including maps and datasets.</p>
+                </li>
+                <li class="d1"><h2><a href="/other-data">
+                        <span class="link-text">Other data types</span>
+                        <img src="/assets/images/public-land.jpg" alt="" />
+                    </a></h2>
+                    <ul>
+                        <li><a href="http://www.dsdip.qld.gov.au/open-data-reform">Land for public recreation</a></li>
+                        <li><a href="http://www.dnrm.qld.gov.au/our-department/natural-resources-and-mines-data">Natural resources and mining</a></li>
+                        <li><a href="http://www.health.qld.gov.au/performance/dental/default.asp">Oral health data</a></li>
+                        <li><a href="http://www.health.qld.gov.au/hic/QHID/Hospital_Activity/default.asp">Selected Queensland hospital activity indicators</a></li>
+                        <li><a href="http://www.health.qld.gov.au/hic/Peri2010/perinatal10.asp">Perinatal statistics</a></li>
+                        <li><a title="Other data types" href="/other-data">More&hellip;</a></li>
+                    </ul>
+                </li>
+                <li class="d1"><h2><a href="https://publications.qld.gov.au/dataset/publishing-standards-data-qld-gov-au">
+                        <span class="link-text">Data standards</span>
+                        <img src="/assets/images/floodcheck-thumbnail.png" alt="" />
+                    </a></h2>
+                    <p>Our data and metadata publishing standards are now publicly available.</p>
+                </li>
+              
+                <li class="d1"><h2><a href="http://docs.ckan.org/en/latest/api/index.html">
+                        <span class="link-text">API guide</span>
+                        <img src="/assets/images/data.gov.au.jpg" alt="" />
+                    </a></h2>
+                   <p>Data Portal’s core functionality can be used by external code using API calls.</p>
+                </li>
+            </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}{% endblock -%}

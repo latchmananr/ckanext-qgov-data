@@ -1,0 +1,47 @@
+{# 
+Renders the login form.
+
+action        - The url that the form should be submitted to.
+error_summary - A tuple/list of form errors.
+
+Example:
+
+  {% snippet "user/snippets/login_form.html", action=c.login_handler, error_summary=error_summary %}
+
+#}
+{% import 'macros/form.html' as form %}
+
+
+<form action="{{ action }}" method="post" class="form">
+  {% if error_summary %}
+    {% if error_summary[''] == 'account-locked' %}
+      <div class="error-explanation alert alert-error">
+        <b>Login fail:</b><br/>
+        An invalid password was entered 10 times. Your account is now locked.<br/>
+        Please contact Smart Service Queensland to reset your account— <a href="mailto:onlineservices@smartservice.qld.gov.au">onlineservices@smartservice.qld.gov.au</a>.
+      </div>
+  
+    {% else %}
+      {% set username_error = true %}
+      {% set password_error = true %}
+      {{ form.errors(errors=error_summary) }}
+    {% endif %}
+  {% endif %}
+  <ol class="questions">
+    <li class="required text">
+      <label for="field-login">
+        <span class="label">Username</span>
+        <abbr title="(required)">*</abbr>
+      </label>
+      <input id="field-login" type="text" name="login" value=""required="required"  />
+    </li>
+    <li class="required secret">
+      <label for="field-password">
+        <span class="label">Password</span>
+        <abbr title="(required)">*</abbr>
+      </label>
+      <input id="field-password" type="password" name="password" value="" required="required"  />
+    </li>
+    <li class="footer"><strong><input type="submit" class="btn btn-success" value="{{ _('Log in') }}" /></strong></li>
+  </ol>
+</form>

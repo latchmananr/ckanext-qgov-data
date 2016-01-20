@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{%- block page -%}
+
+  {#
+  Override the header on a page by page basis by extending this block. If
+  making sitewide header changes it is preferable to override the header.html
+  file.
+  #}
+  {%- block header %}
+    {% include [h.beta_or_prod_asset(),'header.html']|join %}
+    {% include 'global/banner.html' %}
+  {% endblock -%}
+
+  {# The content block allows you to replace the content of the page if needed #}
+  {%- block content %}
+    <div id="page-container"><div class="max-width">
+      <div id="content-container">
+        <div id="content">
+          <div class="article"><div class="box-sizing"><div class="border" id="article">
+            {% block actions %}
+              {% block actions_content %}{% endblock %}
+            {% endblock %}
+
+            {% block pre_primary %}
+            {% endblock %}
+            
+            {% block primary %}
+              {% block primary_content %}
+                {% block page_header %}
+                  <header class="module-content page-header">
+                    {% if self.content_action() | trim %}
+                      <div class="content_action">
+                        {% block content_action %}{% endblock %}
+                      </div>
+                    {% endif %}
+                    <ul class="nav nav-tabs">
+                      {% block content_primary_nav %}{% endblock %}
+                    </ul>
+                  </header>
+                {% endblock %}
+                <div class="module-content">
+                  {% if self.page_primary_action() | trim %}
+                    <div class="page_primary_action">
+                      {% block page_primary_action %}{% endblock %}
+                    </div>
+                  {% endif %}
+                  {% block primary_content_inner %}
+                  {% endblock %}
+                </div>
+              {% endblock %}
+            {% endblock %}
+          </div></div></div><!-- end .article .box-sizing .border -->
+        </div><!-- end #content -->
+
+        <div id="asides">
+          {% block aside %}{% endblock %}
+
+          {% block toolbar %}
+            {% block add_action %}
+              {% if self.add_action_content() | trim %}
+              <div class="aside">
+                <div class="section-header"><h2>{{ _('What\'s next?') }}</h2></div>
+                {% block add_action_content %}{% endblock %}
+              </div>
+              {% endif %}
+            {% endblock %}
+          {% endblock %}
+        </div>  
+        <div id="meta-wrapper"><div class="meta-box-sizing"><div class="border">
+          {% snippet [h.beta_or_prod_asset(),'page-options-post.html']|join, full_current_url=h.full_current_url(), page_title=self.title()|replace(' | ' + h.portal_type('u') + ' | Queensland Government', ''), dataset_owner=(pkg.author_email if pkg else '') %}
+        </div></div></div><!-- end #meta-wrapper, .meta-box-sizing, .border -->
+      </div><!-- end #content-container -->
+      
+      {% block secondary %}
+      <div id="nav-section">
+        <div class="box-sizing">
+          {% block secondary_content %}{% endblock %}
+        </div>
+      </div><!-- end #nav-section -->
+      {% endblock %} 
+
+    </div></div><!-- end #page-container, .max-width -->
+  {% endblock -%}
+
+  {#
+  Override the footer on a page by page basis by extending this block. If
+  making sitewide header changes it is preferable to override the footer.html-u
+  file.
+  #}
+  {%- block footer %}
+    {% include [h.beta_or_prod_asset(),'footer-page.html']|join %}
+    {%- block custom_script %}{% endblock -%}
+    <script type="text/javascript" src="/global/qgovpubsdata-script.js"></script>
+    {% include [h.beta_or_prod_asset(),'footer-stats.html']|join %}
+  {% endblock -%}
+{%- endblock -%}
+
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+    {% if g.tracking_enabled %}
+      {% resource 'base/tracking.js' %}
+    {% endif %}
+  {{ super() }}
+{% endblock -%}
+
+{% block meta %}
+  {{ super() }}
+  {% if 'staging' in h.full_current_url()  %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+{% endblock %}

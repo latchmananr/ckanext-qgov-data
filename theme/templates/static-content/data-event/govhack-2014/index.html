@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("GovHack 2014") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('Events') }}</a></li>
+    <li><a href="/static-content/data-event/govhack">{{ _('GovHack') }}</a></li>   
+    <li class="last-child">{{ _('GovHack 2014') }}</li>
+{% endblock %}
+
+{% block primary %}
+    <h1>{{ _('GovHack 2014') }}</h1>
+    {% trans %}
+
+<p>In July 2014 at locations across Australia open data enthusiasts and experts came together to create, mash and hack together data in new and innovative ways.</p>
+<p>The Queensland Government sponsored a prize for best use of Queensland Government data.  The winner was SocialTest developed by Mick Davies of 5150 Studios on the Gold coast.</p>  
+<p>Using SocialTest you can search through multiple government datasets comparing soft crimes, the degree of Centrelink assistance and rental prices to gain a greater understanding of the potential needs of South East Queensland suburbs.</p>
+<p>Congratulations Mick.</p>
+
+    {% endtrans %}
+
+{% endblock %}
+
+{% block aside %}
+    <div class="aside">
+  		<img src="/assets/images/events/govhac-2014-cut-in.jpg" alt="" />
+  		<div class="caption">Assistant Minister Ray Stevens and Mick Davies, winner of the 2014 GovHack award for Best Use of Queensland Government Data.</div>
+	</div>
+	{% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-event-govhack-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+  <script type="text/javascript"><!--
+    $( '#nav-site' ).find('[href="/data-event"]').addClass('active');
+  // --></script>
+  {{ super() }}
+{% endblock -%}

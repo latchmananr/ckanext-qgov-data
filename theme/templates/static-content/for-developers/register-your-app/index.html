@@ -1,0 +1,231 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Register your app | For developers") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('For developers') }}</a></li>
+    <li class="last-child">{{ _('Register your app') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Register your app') }}</h1>
+    <div class="preamble instructions">
+		<p>Please complete this form with as much detail as you can. The better we understand your app, the more likely we are to find promotional opportunities for it. Please note: submitting this form does not guarantee inclusion in our showcase.</p>
+		<p>It takes about 10 minutes to complete this form.</p>
+	</div>
+
+	<form action="https://www.smartservice.qld.gov.au/services/submissions/email/qld/register-your-app" method="post" class="form" id="data-app-form">
+		<input name="recipient" value="onlineproducts@smartservice.qld.gov.au" type="hidden" />
+		<ol class="questions">
+			<li class="section">
+	          <fieldset>
+	          <legend> <span class="h2">Can I submit my app? </span></legend>
+	            <ol class="questions">
+	            <li>
+	              <fieldset>
+	              <legend> <span class="label">Does your app use Queensland Government data?</span> <abbr class="required" title="(required)">*</abbr>  </legend>
+	                <ul class="choices compact">
+	                <li>
+	                  <input id="does-the-app-use-queensland-government-data-yes" name="does-the-app-use-queensland-government-data" value="Yes" required="required" type="radio" />
+	                  <label for="does-the-app-use-queensland-government-data-yes">Yes</label>
+	                </li>
+	                  <li>
+	                  <input id="does-the-app-use-queensland-government-data-no" name="does-the-app-use-queensland-government-data" value="No" required="required" type="radio" />
+	                  <label for="does-the-app-use-queensland-government-data-no">No</label>
+	                </li>
+	                </ul>
+	                </fieldset>
+	            </li>
+	            <li>
+	              <fieldset>
+	              <legend> <span class="label">Do you own—or represent the owners of—the intellectual property of the app you're submitting?</span> <abbr class="required" title="(required)">*</abbr> <small class="relevance">(If you chose 'Yes' above)</small> </legend>
+	                <ul class="choices compact">
+	                <li>
+	                  <input id="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting-yes" name="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting" value="Yes" required="required" type="radio" />
+	                  <label for="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting-yes">Yes</label>
+	                </li>
+	                  <li>
+	                  <input id="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting-no" name="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting" value="No" required="required" type="radio" />
+	                  <label for="you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting-no">No</label>
+	                </li>
+	                </ul>
+	                </fieldset>
+	            </li>
+	            </ol>
+	            </fieldset>
+			 </li>
+			<li class="section" id="submit-app">
+				<fieldset>
+					<legend>
+						<span class="h2">Submit your app</span>
+						<small class="hint">(If you chose ‘Yes’ above)</small>				
+	                </legend>
+					<ol class="questions">
+						<li class="section">
+							<fieldset>
+								<legend>
+									<span class="h3">App details</span>							
+	                            </legend>
+								<ol class="questions">
+									<li>
+										<label for="app-name">
+											<span class="label">App name</span>
+											<abbr class="required" title="(required)">*</abbr>
+																	
+	                                    </label>
+										<input id="app-name" name="app-name" size="30" required="required" type="text" />
+									</li>
+									<li>
+										<label for="app-urls">
+											<span class="label">App URLs</span>
+											<abbr class="required" title="(required)">*</abbr>
+											<small class="hint">The app must be hosted elsewhere. List all available URLs (e.g. IOS version and Android version)</small>									
+	                                    </label>
+										<input id="app-urls" name="app-urls" size="40" required="required" type="text" />
+									</li>
+									<li>
+										<label for="app-description">
+											<span class="label">App description</span>
+											<abbr class="required" title="(required)">*</abbr>
+											<small class="hint">What does the app do? (Approx. 100 to 300 words.)</small>									
+	                                    </label>
+										<textarea id="app-description" name="app-description" rows="3" cols="40" required="required"></textarea>
+									</li>
+									<li>
+										<label for="what-queensland-government-data-does-the-app">
+											<span class="label">What Queensland Government data does your app use?</span>
+											<abbr class="required" title="(required)">*</abbr>
+											<small class="hint">Please list all Queensland Government data sources that your app uses. We may use this to cross promote your app from the relevant datasets.</small>									
+	                                    </label>
+										<textarea id="what-queensland-government-data-does-the-app" name="what-queensland-government-data-does-the-app" rows="2" cols="40" required="required"></textarea>
+									</li>
+								</ol>
+							</fieldset>
+						</li>
+						<li class="section">
+							<fieldset>
+								<legend>
+									<span class="h3">App terms and conditions</span>							
+	                           </legend>
+								<ol class="questions">
+									<li class="atomic group">
+										<fieldset>
+											<legend>
+												<span class="label">Publishing requirements</span>										
+	                                        </legend>
+											<ol class="questions compact">
+												<li>
+													<abbr class="required" title="(required)">*</abbr>
+				                                    <input id="i-guarantee-that-this-app-contains-no-virus-or-malware-and-complies-with-all-australia-and-queensland-laws" name="i-guarantee-that-this-app-contains-no-virus-or-malware-and-complies-with-all-australia-and-queensland-laws" value="i-guarantee-that-this-app-contains-no-virus-or-malware-and-complies-with-all-australia-and-queensland-laws" type="checkbox" required="required" />
+													<label for="guarantee">I guarantee that this app contains no viruses or other malware and complies with all Australian and Queensland laws, including the <a href="http://www.legislation.qld.gov.au/LEGISLTN/CURRENT/I/InfoPrivA09.pdf"><em>Information Privacy Act 2009</em> (PDF, 836 KB)</a>.</label>
+												</li>
+												<li>
+													<abbr class="required" title="(required)">*</abbr>
+				                                    <input id="i-consent-to-my-app-to-be-scanned-for-vulnerabilities-and-security" name="i-consent-to-my-app-to-be-scanned-for-vulnerabilities-and-security" value="i-consent-to-my-app-to-be-scanned-for-vulnerabilities-and-security" required="required" type="checkbox" />
+													<label for="i-consent-to-my-app-to-be-scanned-for-vulnerabilities-and-security">I consent to my app being scanned for vulnerabilities and malicious intent.</label>
+												</li>
+											</ol>
+										</fieldset>
+									</li>
+								</ol>
+							</fieldset>
+						</li>
+						<li class="section">
+							<fieldset>
+								<legend>
+									<span class="h3">Your contact details</span>							
+	                           </legend>
+								<ol class="questions">
+									<li class="atomic group">
+										<fieldset>
+											<legend>
+												<span class="label">Name</span>										
+	                                        </legend>
+											<ol class="questions compact">
+												<li>
+													<label for="given-name1">
+														<span class="label">Given name</span>
+														<abbr class="required" title="(required)">*</abbr>												
+	                                                 </label>
+													<input id="given-name1" name="given-name1" size="15" required="required" type="text" />
+												</li>
+												<li>
+													<label for="family-name1">
+														<span class="label">Family name</span>
+														<abbr class="required" title="(required)">*</abbr>												
+	                                                </label>
+													<input id="family-name1" name="family-name1" size="15" required="required" type="text" />
+												</li>
+											</ol>
+										</fieldset>
+									</li>
+									<li>
+										<label for="email1">
+											<span class="label">Email</span>
+											<abbr class="required" title="(required)">*</abbr>									
+	                                    </label>
+										<input id="email1" name="email1" size="40" required="required" type="email" />
+									</li>
+									<li>
+										<label for="phone2">
+											<span class="label">Phone</span>
+											<abbr class="required" title="(required)">*</abbr>									
+	                                    </label>
+										<input id="phone2" name="phone2" size="20" required="required" type="tel" />
+									</li>
+								</ol>
+							</fieldset>
+						</li>
+						<li class="footer">
+							<div class="instructions"></div>
+							<ul class="actions">
+								<li>
+									<strong>
+										<input value="Submit your app" type="submit" />
+									</strong>							
+	                            </li>
+							</ul>
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+		</ol>
+
+	    <div id="alert-qld-data" class="status warn">
+	        <h2>Your app is not eligible to be showcased on the Queensland Government Data Portal.</h2>
+	    </div>
+	    
+	    <div id="alert-ip" class="status warn">
+	        <h2>You must own or represent the owners of the intellectual property for your app to be showcased on the Queensland Government Data Portal.</h2>
+	    </div>
+	    
+	    
+	</form>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-for-developers-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+<script type="text/javascript"><!--
+	(function( $ ) {
+		'use strict';
+
+		$( '#alert-qld-data' ).relevance( 'relevantWhen', {
+			name: 'does-the-app-use-queensland-government-data',
+			value: 'No'
+		});
+		$( '#alert-ip' ).relevance( 'relevantWhen', {
+			name: 'you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting',
+			value: 'No'
+		});
+		$( '#submit-app' ).relevance( 'relevantWhen', {
+			name: 'you-you-own-or-represent-the-owners-of-the-intellectual-property-of-the-application-you-re-submitting',
+			value: 'Yes'
+		});  
+		$( '#nav-site' ).find('[href="/for-developers"]').addClass('active'); 
+	}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

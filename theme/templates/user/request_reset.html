@@ -1,0 +1,23 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Reset your password') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Password reset'), controller='user', action='register' %}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1 class="page-heading">{{ _('Reset your password') }}</h1>
+    <p>{% trans %}Enter your username into the username field and we will send you an email with a link to enter a new password.{% endtrans %}</p>
+    {% block form %}
+      <form action="" method="post" class="form-inline control-medium">
+        <label for="field-username">{{ _('Username') }}</label>
+        <input id="field-username" name="user" value="" />
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" name="reset">{{ _("Request reset") }}</button>
+        </div>
+      </form>
+    {% endblock %}
+{% endblock %}
+
+{% block secondary_content %}{% endblock %}

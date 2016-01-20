@@ -1,0 +1,87 @@
+{% import 'macros/form.html' as form %}
+
+{% block package_metadata_fields %}
+
+  {% block package_metadata_fields_version %}
+    {{ form.input('version', label=_('Version'), id='field-version', placeholder=_('1.0'), value=data.version, error=errors.version, classes=['control-medium'], is_required=true, attrs={ 'required':'required'}) }}
+  {% endblock %}
+
+  {% block package_metadata_author %}
+    {{ form.input('author', label=_('Departmental contact'), id='field-author', placeholder=_('opendata@agency.qld.gov.au'), value=data.author, error=errors.author, classes=['control-medium'], is_required=true, attrs={ 'required':'required'}) }}
+
+    {{ form.input('author_email', label=_('Email'), id='field-author-email', placeholder=_('opendata@agency.qld.gov.au'), value=data.author_email, error=errors.author_email, is_required=true, classes=['control-medium'], attrs={ 'required':'required'}) }}
+  {% endblock %}
+
+  {% block package_metadata_fields_maintainer %}
+    {{ form.input('maintainer', label=_('Maintainer'), id='field-maintainer', placeholder=_('Joe Bloggs'), value=data.maintainer, error=errors.maintainer, classes=['control-medium'], is_required=true) }}
+
+    {{ form.input('maintainer_email', label=_('Maintainer Email'), id='field-maintainer-email', placeholder=_('joe@example.com'), value=data.maintainer_email, error=errors.maintainer_email, classes=['control-medium'], is_required=true) }}
+  {% endblock %}
+
+  {% block package_metadata_fields_custom %}
+    {% block custom_fields %}
+      {% if h.portal_type('site')=='data' %}
+        <input type="hidden" name="extras__0__key" value="Security classification" />
+        <div class="control-group">
+          <label for="field-classification" class="control-label"><span class="label">{{ _('Security classification') }}</span></label>
+          <div class="controls">
+            <select id="field-classification" name="extras__0__value" id="field-extras-value-0">
+              <option {% if data.extras|count > 0 and data.extras[0].value|upper == "PUBLIC" %}selected="selected"{% endif %}>PUBLIC</option>
+              <option {% if data.extras|count > 0 and data.extras[0].value|upper == "UNCLASSIFIED" %}selected="selected"{% endif %}>UNCLASSIFIED</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" name="extras__1__key" value="Used in data-driven application" />
+        {% if h.check_access('sysadmin') %}
+        <div class="control-group">
+          <label for="field-data-driven" class="control-label"><span class="label">{{ _('Used in data-driven application') }}</span></label>
+          <div class="controls">
+            <select id="field-data-driven" name="extras__1__value" id="field-extras-value-1">
+              <option {% if data.extras[1] is defined and data.extras[1].value|upper == "NO" %}selected="selected"{% endif %}>NO</option>
+              <option {% if data.extras[1] is defined and data.extras[1].value|upper == "YES" %}selected="selected"{% endif %}>YES</option>
+            </select>
+          </div>
+        </div>
+        {% else %}
+        <input name="extras__1__value" value="{{ 'YES' if data.extras[1] is defined and data.extras[1].value|upper == "YES" else 'NO' }}" type="hidden"/>
+        {% endif %}
+      {% else %}
+        {% snippet 'snippets/custom_form_fields.html', extras=data.extras, errors=errors, limit=3 %}
+      {% endif %}
+    {% endblock %}
+  {% endblock %}
+
+  {% block dataset_fields %}
+    {% if data.groups %}
+      <div class="control-group">
+        <label class="control-label">
+          <span class="label">{{ _('Categories') }}</span>
+          <small class="hint">Add more categories by selecting from category list below. To remove, uncheck the category(s) above.</small>
+        </label>
+        <div class="controls">
+          {% for group in data.groups %}
+            <label class="checkbox" for="field-group-{{ loop.index0 }}">
+              <input id="field-group-{{ loop.index0 }}" type="checkbox" name="groups__{{ loop.index0 }}__id" value="{{ group.id }}" checked="checked" />
+              {{ group.title }}
+            </label>
+          {% endfor %}
+        </div>
+        
+    </div>
+    {% endif %}
+
+    {% set group_name = 'groups__%s__id' % data.groups|length %}
+    <div class="control-group">
+      <label class="control-label" for="field-group"><span class="label">{% if data.groups|length > 0 %}{{ _("Other categories") }}{% else %}{{ _("Category") }}{% endif %}</span></label>
+      <div class="controls">
+        <select id="field-group" name="{{ group_name }}">
+            <option value="">{{ _('Select a category...') }}</option>
+         {% for group in h.groups_available() %}
+            <option value="{{ group.id }}">{{ h.group_name_to_title(group.name) }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{#
+Display a grid of group items.
+
+groups - A list of groups.
+
+Example:
+
+    {% snippet "group/snippets/group_list.html" %}
+
+#}
+<table width="100%">
+ 	<thead>
+		<tr>
+			<th width="80%">Title</th>
+			<th width="20%">{{ h.portal_type('uss') }}</th>
+		</tr>
+	</thead>
+	<tbody>
+  {% for group in groups %}
+    {% if group.display_name != 'Upload privileges' %}
+    {% snippet "group/snippets/group_item.html", group=group, position=loop.index %}
+    {% endif %}
+  {% endfor %}
+  	</tbody>
+</table>

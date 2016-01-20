@@ -1,0 +1,59 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Events") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="last-child">{{ _('Events') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Events') }}</h1>
+    {% trans %}
+        <div class="section" id="ia">
+            <ul id="flex-grid">
+
+                <li class="d1"><h2><a href="/static-content/data-event/govhack">
+                        <span class="link-text">GovHack</span>
+                        <img src="/assets/images/events/govhack-2015-thumb.jpg" alt="" />
+                    </a></h2>
+                    <ul>
+                        <li><a href="/static-content/data-event/govhack/2015">GovHack 2015</a></li>
+                        <li><a href="/static-content/data-event/govhack-2014">GovHack 2014</a></li>
+                    </ul>
+                </li>
+
+                <li class="d1"><h2><a href="https://www.qld.gov.au/dsitia/initiatives/science-open-data/">
+                        <span class="link-text">Science open data competition</span>
+                        <img src="/assets/images/science-open-data-thumb.jpg" alt="" />
+                    </a></h2>
+                    <ul>
+                        <li><a href="https://www.qld.gov.au/dsitia/initiatives/science-open-data/about-competition">About the competition</a></li>
+                        <li><a href="https://www.qld.gov.au/dsitia/initiatives/science-open-data/competition-guidelines">Competition guidelines</a></li>
+                        <li><a href="https://www.qld.gov.au/dsitia/initiatives/science-open-data/showcase-comp-launch">Showcase and competition launch</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="d1"><h2>
+                        <span class="link-text">Previous open data events</span>
+                        <img src="/assets/images/data-mixer-thm.jpg" alt="" />
+                    </h2>
+                    <ul>
+                        <li><a href="/data-event/premiers-awards/events/">Open Data Mixer</a></li>
+                        <li><a href="/data-event/opening-the-vault">Opening the Vault: Open Data in Queensland</a></li>
+                        <li><a href="/data-event/premiers-awards/about/">Premier’s Awards 2014</a></li>
+                        <li><a href="/data-event/premiers-awards/about-2013/">Premier’s Awards 2013</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    {% endtrans %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}{% endblock -%}

@@ -1,0 +1,101 @@
+{% extends "package/resource_edit_base.html" %}
+
+{% block subtitle %}{{ _('Add resource') }} - {{ h.dataset_display_name(pkg) }}{% endblock %}
+{% block form_title %}{{ _('Add resource') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li class="active"><a href="#">{{ _('Add New Resource') }}</a></li>
+{% endblock %}
+
+{% block form %}
+  {% snippet 'package/snippets/resource_form.html', data=data, errors=errors, error_summary=error_summary, include_metadata=false, pkg_name=pkg_name, stage=stage, allow_upload=g.ofs_impl and logged_in %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  <li class="active"><a href="#"><i class="icon-edit"></i> {{ _('New resource') }}</a></li>
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'package/snippets/resource_help.html' %}
+{% endblock %}
+
+{%- block scripts %}
+<script type="text/javascript"><!--
+  (function( $ ) {
+    'use strict';
+
+    var sizeField = $('#field-size'),
+      fileSize = '',
+      fileNum,
+      fileText,
+      fileBytes,
+      fileMultiplier,
+      override;
+
+
+    // on focus lost 
+    $('#field-size').bind( 'change', function() {
+      sizeField[ 0 ].setCustomValidity( '' );
+      if ($('#field-size').val().length >= 0) verifyInput();
+    });
+
+    function verifyInput() {
+      //get input - remove spaces and capitalise
+      fileSize = $('#field-size').val().replace(/ /g,'').replace(/,/g,'').toUpperCase();
+      $('#field-size').val(fileSize);
+      if (!RegExp(/^\d+$/).test(fileSize)) fileSizeCat();
+    }
+
+    function fileSizeCat() {
+      if (RegExp(/^\d*\.?\d+[A-Za-z]*$/).test(fileSize)){
+        fileNum = fileSize.match(/\d*\.?\d*/);
+        fileText = fileSize.match(/[A-Za-z]+/);
+
+        if ( fileText == 'TB' || fileText == 'T' || fileText == 'TERABYTES' || fileText == 'TBS' || fileText == 'TIB' ) { 
+          fileMultiplier = 1099511627776;
+        } else if ( fileText == 'GB' || fileText == 'G' || fileText == 'GIGABYTES' || fileText == 'GIG' || fileText == 'GBS' || fileText == 'GIB'  ) { 
+          fileMultiplier = 1073741824;
+        } else if ( fileText == 'MB' || fileText == 'M' || fileText == 'MEGABYTES' || fileText == 'MBS' || fileText == 'MIB' ){
+          fileMultiplier = 1048576;
+        } else if ( fileText == 'KB' ||fileText == 'K' || fileText == 'KILOBYTES' || fileText == 'KBS' || fileText == 'KIB'  ) { 
+          fileMultiplier = 1024;
+        } else {
+          sizeField[ 0 ].setCustomValidity( 'Must be a valid filesize format (e.g. 123, 1.2KB, 2.5MB)' );
+          return;
+        }
+        fileBytes = parseInt(fileNum * fileMultiplier);
+        $('#field-size').val(fileBytes);
+      } else {
+        sizeField[ 0 ].setCustomValidity( 'Must be a valid filesize format' );
+      }
+    }
+
+    $( '#field-expiration-date' ).bind( 'change', function() {
+ 
+        var datePattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/,
+            dateField = $( this ),
+            value = dateField.val()
+        ;
+     
+        // if there is no value
+        if ( value === '' ) {
+            // clear the custom error
+            dateField[ 0 ].setCustomValidity( '' );
+            // required field validation will kick in
+     
+        // test if value matches pattern
+        } else if ( datePattern.test( value )) {
+            // valid
+            dateField[ 0 ].setCustomValidity( '' );
+        } else {
+            // invalid
+            dateField[ 0 ].setCustomValidity( 'Must be in dd/mm/yyyy format' );
+        }
+    });
+
+    $( '#field-expiration-date' ).datepicker({ dateFormat: 'dd/mm/yy' });
+  }( jQuery ));
+  // --></script>
+  {{ super() }}
+{% endblock -%}

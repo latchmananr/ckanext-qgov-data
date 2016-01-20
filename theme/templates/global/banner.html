@@ -1,0 +1,41 @@
+<!-- noindex -->
+<div id="banner"><div class="box-sizing"><div class="max-width">
+  <h2 id="site-name"><a href="https://{{ h.portal_type('site') }}.qld.gov.au/" accesskey="2">
+    <!--[if gte IE 7]><!--><img src="/assets/images/skin/site-name.png" alt="{{ h.portal_type('site') }}.qld.gov.au" /><!--<![endif]-->
+    <!--[if lte IE 6]><img src="/assets/images/skin/site-name-ie6.png" alt="{{ h.portal_type('site') }}.qld.gov.au" /><![endif]-->
+    <img src="/assets/images/skin/site-name-print.png" class="print-version" alt="" />
+  </a></h2>
+  <ul id="tools">
+    {% block header_account %}
+    {% if c.userobj %}
+    {% block header_account_logged %}
+    {% if c.userobj.sysadmin %}
+    <li><a href="{{ h.url_for(controller='admin', action='index') }}">{{ _('Administrator') }}</a></li>
+    {% endif %}
+    <li><a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}">{{ c.userobj.display_name }}</a></li>
+    {% set new_activities = h.new_activities() %}
+    <li>
+      {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+      <a href="{{ h.url_for(controller='user', action='dashboard') }}">{{ notifications_tooltip }}</a>
+    </li>
+    <li><a href="{{ h.url_for('/user/_logout') }}">{{ _('Log out') }}</a></li>
+    {% endblock %}
+    {% endif %}
+    {% endblock %}
+    <li class="last-child" id="header-search">
+      <form id="search-form" action="{% url_for controller='package', action='search' %}" method="get">
+        <div>
+          <label for="search-query" class="visuallyhidden">Search for {{ h.portal_type('l') }}</label>
+          <input accesskey="5" type="search" name="q" id="search-query" size="27" value="" placeholder="Search for {{ h.portal_type('l') }}" />
+          {# MUST NOT USE image[type=submit]: the x and y parameters submitted break CKAN search #}
+          <button id="search-button"><img src="https://www.qld.gov.au/assets/v2/images/skin/button-search.png" alt="Search" /></button>
+        </div>
+      </form>
+    </li>
+  </ul>
+
+</div></div></div>
+<div id="nav-site"><div class="box-sizing"><div class="max-width">
+  {% snippet "global/primary-nav.html" %}
+</div></div></div>
+<!-- endnoindex -->

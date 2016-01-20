@@ -1,0 +1,78 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Manage') }} - {{ c.user_dict.display_name }} - {{ _('Users') }}{% endblock %}
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      {% block primary_content_inner %}{% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+
+{%- block scripts %}
+<script type="text/javascript"><!--
+  (function( $ ) {
+    'use strict';
+
+    $( '#field-password' ).bind( 'change', function() {
+      var passPattern = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-`~!@#$%^&*()_+=|\\\/ ]).{6,20})/,
+          passField = $( '#field-password' ),
+          confPassField = $( '#field-password-confirm' ),
+          value = passField.val()
+      ;
+   
+      // if there is no value
+      if ( value === '' ) {
+          // clear the custom error
+          passField[ 0 ].setCustomValidity( '' );
+          confPassField[ 0 ].setCustomValidity( '' );
+          // required field validation will kick in
+   
+      // test if value matches pattern
+      } else if ( passPattern.test( value )) {
+        // valid
+        passField[ 0 ].setCustomValidity( '' );
+        // check val of conf
+        if ( value == $( '#field-password-confirm' ).val()) {
+            $( '#field-password-confirm' ).trigger('change');
+        }
+
+      } else {
+        // invalid
+        passField[ 0 ].setCustomValidity( 'Password not formatted correctly' );
+        if ( value == $( '#field-password-confirm' ).val()) {
+          $( '#field-password-confirm' ).trigger('change');
+        }         
+    }
+     
+    });
+
+    $( '#field-password-confirm' ).bind( 'change', function() {
+     
+      var confPassField = $( '#field-password-confirm' ),
+        value = confPassField.val()
+      ;
+      // if there is no value
+      if ( value === '' ) {
+        // clear the custom error
+        confPassField[ 0 ].setCustomValidity( '' );
+        // required field validation will kick in
+   
+      // test if value matches pattern
+      } else if ( value == $( '#field-password' ).val()) {
+        // valid
+        confPassField[ 0 ].setCustomValidity( '' );
+   
+      } else {
+        // invalid
+        confPassField[ 0 ].setCustomValidity( 'Passwords do not match' );
+      }
+     
+    });
+
+  }( jQuery ));
+  // --></script>
+  {{ super() }}
+{% endblock -%}

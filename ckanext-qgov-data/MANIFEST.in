@@ -1,0 +1,2 @@
+recursive-include ckanext/qgov/data/resources *
+recursive-include ckanext/qgov/data/theme *

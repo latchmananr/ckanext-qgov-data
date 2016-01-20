@@ -1,0 +1,83 @@
+{% extends "package/base.html" %}
+
+{% block subtitle %}{{ pkg.title or pkg.name }} - {{ super() }}{% endblock %}
+
+{% block links -%}
+  {{ super() }}
+  <link rel="alternate" type="application/rdf+xml" href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>
+{% endblock -%}
+
+{% block head_extras -%}
+  {{ super() }}
+  {% set description = h.markdown_extract(pkg.notes, extract_length=200)|forceescape %}
+  <meta property="og:title" content="{{ h.dataset_display_name(pkg) }} - {{ g.site_title }}">
+  <meta property="og:description" content="{{ description|forceescape }}">
+{% endblock -%}
+
+
+{% block content_action %}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    {% link_for _('Manage ' + h.portal_type('ls')), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
+    {% link_for _('Manage resources'), controller='package', action='resources', id=pkg.name, class_='btn', icon='wrench' %}
+  {% endif %}
+  {# if not hide_follow_button %}
+      {% link_for _('Follow'), controller='package', action='follow', id=pkg.name, class_='btn btn-success', icon='plus-sign' %}
+  {% endif #}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('dataset_read', _(h.portal_type('us')), id=pkg.name) }}
+  {{ h.build_nav_icon('dataset_activity', _('Activity stream'), id=pkg.name) }}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    {{ h.build_nav_icon('related_list', _('Related'), id=pkg.name) }}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  {% block package_revision_info %}
+    {% if c.pkg_revision_id %}
+      <div class="module info alert alert-info">
+        <p class="module-content">
+          {% set timestamp = h.render_datetime(c.pkg_revision_timestamp, with_hours=True) %}
+          {% set url = h.url(controller='package', action='read', id=pkg.name) %}
+          {% set portal = h.portal_type('ls') %}
+          {% if c.pkg_revision_not_latest %}
+            {% trans timestamp=timestamp, url=url, portal=portal %}This is an old revision of this {{ portal }}, as edited at {{ timestamp }}. It may differ significantly from the <a href="{{ url }}">current revision</a>.{% endtrans %}
+          {% else %}
+            {% trans timestamp=timestamp, portal=portal %}This is the current revision of this {{ portal }}, as edited at {{ timestamp }}.{% endtrans %}
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endblock %}
+
+{% block aside %}
+
+  {% block secondary_help_content %}{% endblock %}
+
+  {% block package_organization %}
+    {% if pkg.organization %}
+      {% set org = h.get_organization(pkg.organization.name) %}
+      {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
+    {% endif %}
+  {% endblock %}
+
+
+  {% if c.pkg.related %}
+    {% snippet "related/snippets/related_list_aside.html", related_items=c.pkg.related, pkg_id=c.pkg.name  %}
+    {% elif c.pkg.related|length == 0 and h.check_access('package_update', {'id':pkg.id }) %}
+      <div class="aside tip">
+        <h2>Add related information</h2>
+        <p>You can add a <a href="/dataset/{{ c.pkg.name }}/related/new">related item</a> which will appear in this section.</p>
+        <p class="more"><a href="/dataset/{{ c.pkg.name }}/related/new" class="">Add related item</a></p>
+      </div>
+  {% endif %} 
+  {% snippet "package/snippets/publishing_standards.html", pkg_dict=pkg %}
+{% endblock %}
+
+{% block add_action_content %}{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'static-content/snippets/data-datasets-navsection.html' %}
+{% endblock %}

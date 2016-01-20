@@ -1,0 +1,25 @@
+{#
+Display a grid of organization items.
+
+organizations - A list of organizations.
+
+Example:
+
+    {% snippet "organization/snippets/organization_list.html" %}
+
+#}
+<table>
+	<thead>
+		<tr>
+			<th>Organisation name</th>
+			<th>{{  h.portal_type('uss') }}</th>
+		</tr>
+	</thead>
+	<tbody>
+   {% for organization in organizations %}
+    {% set first = loop.index0 % 3 == 0 %}
+    {% set last  = loop.index0 % 3 == 2 %}
+    {% snippet "organization/snippets/organization_item.html", organization=organization, first=first, last=last %}
+  {% endfor %}
+  	</tbody>
+</table>

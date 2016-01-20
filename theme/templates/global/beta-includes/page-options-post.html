@@ -1,0 +1,90 @@
+<!-- noindex -->
+<div id="post-page-options" class="page-options">
+	<ul>
+		<li class="share">
+			<h2>Share:</h2>
+			<a class="facebook" href="https://www.qld.gov.au/share/?via=facebook&amp;title={{ page_title }}" title="Share using Facebook"><span>Facebook</span></a>
+			<a class="twitter" href="https://www.qld.gov.au/share/?via=twitter&amp;title={{ page_title }}" title="Share using Twitter"><span>Twitter</span></a>
+			<a class="linkedin" href="https://www.qld.gov.au/share/?via=linkedin&amp;title={{ page_title }}" title="Share using LinkedIn"><span>LinkedIn</span></a>
+			<a class="share" href="https://www.qld.gov.au/share/?title={{ page_title }}" title="Share using another service…"><span>More</span></a>
+		</li>
+	</ul>
+</div>
+
+<div id="page-feedback">
+	<form method="post" action="https://www.qld.gov.au/assets/apps/feedback/feedback.jsp" class="form">
+
+		<h2>Page feedback</h2>
+
+		<div id="page-feedback-privacy" class="preamble">
+			<h3>Your privacy</h3>
+			<p>Information collected through this form is used to improve this website.</p>
+			<p>Any information you submit that could identify you (e.g. name, email address) will be stored securely, and destroyed after we process your feedback.</p>
+		</div>
+
+		<ol class="questions">
+			<li id="page-was-useful">
+				<fieldset>
+					<legend>
+						<span class="label">This page was</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="useful" id="page-was-useful-yes" value="yes" />
+							<label for="page-was-useful-yes">Useful</label>
+						</li>
+						<li>
+							<input type="radio" name="useful" id="page-was-useful-no" value="no" />
+							<label for="page-was-useful-no">Not useful</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li class="instruction">
+				<p>We want this information to be the best it can be and we know we can’t do it without you.
+				Let us know what you thought of this page and what other information you would like to see.</p>
+				<p>We do not reply to feedback. <a href="https://www.qld.gov.au/contact-us/">Contact us if you need a response</a>.</p>
+			</li>
+
+			<li>
+				<label for="feedback-comments">
+					<span class="label">Feedback about this page</span>
+				</label>
+				<textarea name="comments" id="feedback-comments" cols="50" rows="7"></textarea>
+			</li>
+
+			<li class="section">
+				<fieldset id="feedback-contact">
+					<legend>
+						<span class="h3">Contact (optional)</span>
+					</legend>
+					<ol class="questions">
+						<li>
+							<label for="feedback-contact-input">
+								<span class="label">Please provide your <strong>phone number</strong> or <strong>email address</strong> if you are happy for us to contact you with any follow-up questions</span>
+							</label>
+							<input type="text" value="" name="contact" id="feedback-contact-input" size="40" />
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+
+			<li id="feedback-captcha-container">
+				<label for="feedback-captcha">Please leave this blank (this helps us identify automatic spam)</label>
+				<input type="text" name="captcha" id="feedback-captcha" value="" />
+			</li>
+
+			<li class="footer">
+				<input type="hidden" name="franchise" id="franchise" value="{{ h.portal_type('site') }}.qld.gov.au" />
+				<input type="hidden" name="page-title" id="page-title" value="{{ page_title }}" />
+				<input type="hidden" name="page-url" value="{{ full_current_url }}" />
+				<input type="hidden" name="dataset-owner" value="{{ dataset_owner }}" />
+				<input type="hidden" name="page-referer" value="" />
+				<ul class="actions">
+					<li><strong><input type="submit" value="Submit feedback" /></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</div>
+<!-- endnoindex -->

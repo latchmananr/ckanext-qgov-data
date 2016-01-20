@@ -1,0 +1,14 @@
+<div class="aside">
+	<h2>{{ _(h.portal_type('u') + ' standards') }}</h2>
+	{% if h.portal_type('site')=='data' %}
+		<p>Our <a href="https://publications.qld.gov.au/dataset/publishing-standards-data-qld-gov-au">data and metadata standards</a> are now publicly available. Does this data follow them? 
+		{% if pkg_dict and pkg_dict.author_email %}
+			If not, {{ h.mail_to(email_address=pkg_dict.author_email+ '?cc=onlineproducts@smartservice.qld.gov.au&subject=Data standards: '+ h.dataset_display_name(pkg_dict), name='let us know') }}.
+		{% endif %}</p>
+	{% else %}
+		<p>Our <a href="https://publications.qld.gov.au/dataset/publishing-standards-publications-qld-gov-au">publication standards</a>&mdash;including accessibility and usability requirements, and metadata guidelines&mdash;are now publicly available. We should be following these standards. 
+	 	{% if pkg_dict and pkg_dict.author_email %}
+			{{ h.mail_to(email_address=pkg_dict.author_email+ '?cc=onlineproducts@smartservice.qld.gov.au&subject=Publication standards: '+ h.dataset_display_name(pkg_dict), name='Let us know if we are not') }}.
+		{% endif %}</p>
+	{% endif %}	
+</div>

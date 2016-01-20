@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Premier’s Awards for Open Data") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('Events') }}</a></li>
+    <li class="last-child">{{ _('Premier’s Awards for Open Data') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Premier’s Awards for Open Data') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+        <ul id="flex-grid">
+            <li class="d1">
+                <h2><a href="/data-event/premiers-awards/about/"><span class="link-text">About the 2014 awards</span><img src="/assets/images/premiers-data-awards.jpg" alt="" /></a></h2>
+                <p>Read about the 2014 Premier’s Awards for Open Data.</p>
+            </li>
+             <li class="d1">
+                <h2><a href="/data-event/premiers-awards/about-2013/"><span class="link-text">About the 2013 awards</span><img src="/assets/images/premiers-data-awards-2013.jpg" alt="" /></a></h2>
+                <p>Find out about the winners from 2013.</p>
+            </li>
+        </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-event-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/data-event"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}
+
+{% block aside %}{% endblock %}

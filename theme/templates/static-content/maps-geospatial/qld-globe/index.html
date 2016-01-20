@@ -1,0 +1,53 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Queensland Globe") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/maps-geospatial">{{ _('Maps and geospatial') }}</a></li>
+    <li class="last-child">{{ _('Queensland Globe') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Queensland Globe') }}</h1>
+    {% trans %}
+        Queensland Globe is a free plug-in developed by the Queensland  Government. It allows you to view a wide range of spatial data through Google  Earth, including:
+        <ul>
+            <li>addresses, localities and boundaries</li>
+            <li>road and rail networks</li>
+            <li>land parcels and tenure</li>
+            <li>areas affected by flood</li>
+            <li>topographical maps. </li>
+        </ul>
+        <h2>Imagery</h2>
+        <p>Imagery used is the latest and best available for public viewing. It  consists of a single layer of either satellite imagery or aerial photography,  with higher resolutions over built-up areas.</p>
+        <h2>Customised searches</h2>
+        Through Queensland Globe, you can also search:
+        <ul>
+            <li><strong>lots and plans</strong>&mdash;returns results for a property based on property descriptions from  rates notices</li>
+            <li><strong>Queensland</strong> <strong>Government  data</strong>&mdash;searches several datasets, including Queensland place names</li>
+            <li><strong>addresses</strong>&mdash;finds results based on the address for a property.</li>
+        </ul>
+        <h2>Getting  started</h2>
+        <p>To install and start using the Queensland Globe, follow these instructions for desktops and laptops:</p>
+        <ol>
+            <li>Download and install the latest, free <a href="http://www.google.com/earth/index.html">Google Earth application</a>. Existing Google Earth users should ensure they have the latest version (version 7.0.2 or newer)</li>
+            <li>Download  and save the QLDGlobe.kml file from the <a href="/dataset/queensland-globe">Queensland Globe dataset</a> to your desktop.</li>
+            <li>To open the Queensland Globe double click QLDGlobe.kml file on your desktop.</li>
+        </ol>
+        <p>For more information or for instructions on how to install the Queensland Globe on mobile devices visit the <a href="http://www.dnrm.qld.gov.au/mapping-data/maps/queensland-globe">Queensland Globe website</a>.</p>
+
+        <h2>Feedback  and enquiries</h2>
+        <p>If you have any questions, or would like to provide  feedback, please contact <A title="blocked::mailto:opendata@dnrm.qld.gov.au" href="mailto:opendata@dnrm.qld.gov.au">opendata@dnrm.qld.gov.au</A>.</p>
+    {% endtrans %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-maps-geospatial-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/dataset"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

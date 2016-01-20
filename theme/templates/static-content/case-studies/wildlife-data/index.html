@@ -1,0 +1,67 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Sharing Queensland wildlife data | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Case studiess') }}</a></li>
+    <li class="last-child">{{ _('Sharing Queensland wildlife data') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Sharing Queensland wildlife data') }}</h1>
+    <h2>The data</h2>
+	<p>The Queensland Government,  through the <a href="/">Open Data portal</a>, provides  access to WildNet information approved for public release. WildNet is used by  the government to manage wildlife data collected from public and private sector  sources. The WildNet data on the portal is accessed using the Queensland  Government’s <a href="/dataset/qld-wildlife-data-api">wildlife  data API</a> (Application Programming Interface).</p>
+	<h2>The user</h2>
+	<p>The <a href="http://www.ala.org.au/">Atlas of Living  Australia</a>, a major national partnership of Australian museums, herbaria, the  CSIRO, a range of government agencies and other entities with biological  collections, accesses Queensland’s wildlife information using the wildlife data  API.</p>
+	<h2>The business benefit</h2>
+	<p>Since making 103,000 WildNet fauna records available in the  Atlas on 29 May 2014, there have been more than 1900 downloads, delivering 33  million records to researchers, policy makers and anyone interested in  Australia’s unique plants and animals. </p>
+	<p>Over the coming months, the Queensland Government intends to  make additional WildNet data available through the Queensland Government’s <a href="http://data.qld.gov.au/">Open Data portal</a>.</p>
+	<p>Specimen data from the Queensland  Museum and Queensland Herbarium are also incorporated within the Atlas.<br clear="all" />
+	</p>
+	<h2>About the Atlas</h2>
+	<p>The Atlas is a truly national database allowing free access  to information on Australia’s flora and fauna. It has a wide range of uses,  including:</p>
+	<ul>
+	  <li>improving our understanding of Australian  biodiversity</li>
+	  <li>assisting researchers build a more detailed  picture of Australia’s biodiversity</li>
+	  <li>assisting environmental managers and policy  makers develop more effective means of managing and sustaining Australia’s  biodiversity.</li>
+	</ul>
+	<p>The Atlas also has strong relationships with related  international organisations for sharing biodiversity data and is the Australian  node of the <a href="http://www.gbif.org/">Global Biodiversity Information  Facility</a> (GBIF).</p>
+	<p>Funding for the Atlas was provided by the Australian Government under the  National Collaborative Research Infrastructure Strategy (NCRIS) and the Super  Science Initiative (SSI), part of the Education Investment Fund.</p>
+	<p>Using the Atlas, researchers can map, analyse and visualize  biodiversity data alongside a wide range of environmental and contextual  information, such as climate and land use.</p>
+	<p>The Atlas is open source and all  data is free to download and reusable.</p>
+	<h2>For more information</h2>
+	<p>For more information about the Atlas of Living Australia, go  to <a href="http://www.ala.org.au/">http://www.ala.org.au/</a>.</p>
+	<p>To access Queensland Government data, bookmark <a href="/">http://data.qld.gov.au</a>.</p>
+{% endblock %}
+
+{% block aside %}
+	<div class="aside">
+    	<div class="figure">
+		    <blockquote class="pull-quote"><p>Access to the WildNet data lets us  develop a fuller understanding of the overall health of our biodiversity.</p></blockquote>
+		    <div class="figcaption"><img style="background: none repeat scroll 0 0 #f9f9f9; background: none repeat scroll 0 0 #f9f9f9; float: right; margin:1em;" src="/assets/images/case-studies/wildlife-data-dr-john-la-salle-inset.png" alt="" /><p><strong>Dr John La Salle</strong> <br />Director,<br /> Atlas of Living Australia</p></div>
+		</div>
+    </div>
+
+    <div class="aside tip">
+    	<h2>Do you know?</h2>
+    	<img src="/assets/images/case-studies/wildlife-data-atlas.png" alt="" />
+    	<p>Since making 103,000 WildNet fauna records available in the Atlas on 29 May 2014, there have been more than 1900 downloads, delivering 33 million records to researchers, policy makers and anyone interested in Australia’s unique plants and animals. </p>
+    	<p>Visit <a href="http://www.ala.org.au/">Atlas of Living Australia website</a>.</p>
+    </div>
+{% endblock %}
+
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block script %}
+<script type="text/javascript"><!--
+	(function( $ ) {
+		'use strict';
+
+		$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+	}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

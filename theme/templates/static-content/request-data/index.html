@@ -1,0 +1,99 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Request data") }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="last-child">{{ _('Request data') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Request data') }}</h1>
+    {% trans %}
+        <p>Please use this form <strong>only to request data</strong> that's not already available. If you have a question about an existing dataset, contact the owning agency directly using the email address provided on the relevant dataset page.</p>
+        <p>Use our <a href="/contact">contact form</a> if you have a general question about this data portal and need a response.</p>
+        
+        <form action="//www.qld.gov.au/cgi-bin/emailform.pl" method="post" class="form">
+            <div>
+                <input type="hidden" name="Customer came from" value="https://data.qld.gov.au/request-data" />
+            </div>
+            <ol class="questions">
+                <li>
+                    <label for="name">
+                        <span class="label">Name</span>
+                    </label>
+                    <input name="name" id="name" size="30" type="text" />
+                </li>
+
+                <li>
+                    <label for="email">
+                        <span class="label">Email</span>
+                    </label>
+                    <input name="email" id="email" size="40" type="email" />
+                </li>
+
+                <li>
+                    <label for="tel">
+                        <span class="label">Phone</span>
+                    </label>
+                    <input name="tel" id="tel" size="20" value="" type="tel" />
+                </li>
+
+                <li>
+                    <label for="organisation">
+                        <span class="label">Organisation</span>
+                    </label>
+                    <input id="organisation" name="organisation" size="30" type="text" />
+                </li>
+
+                <li>
+                    <label for="comments">
+                        <span class="label">Comments</span>
+                    </label>
+                    <textarea name="comments" id="comments" rows="10" cols="40"></textarea>
+                </li>
+
+                <li id="captcha-container">
+                    <label for="captcha">Please leave this blank (this helps us identify automatic spam)</label>
+                    <input type="text" name="captcha" id="captcha" value="" />
+                </li>
+
+                <li class="footer">
+                    <input type="hidden" name="email_field" value="email" />   
+                    <input type="hidden" name="recipient" value="Government.Gateway@qld.gov.au" />
+                    <input type="hidden" name="redirect" value="https://data.qld.gov.au/thanks" />
+                    <input type="hidden" name="subject" value="Request data" />
+
+                    <ul class="actions">
+                        <li>
+                            <strong>
+                                <input value="Send message" type="submit" />
+                            </strong>
+                        </li>
+                    </ul>
+                </li>
+
+            </ol>
+        </form>
+    {% endtrans %}
+{% endblock %}
+
+{% block aside %}
+    {% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+    (function( $ ) {
+        'use strict';
+
+        $( '#nav-site' ).find('[href="/contact"]').addClass('active'); 
+        $( '#nav-section' ).find('[href="/contact"]').parent().addClass('current-page');
+
+    }( jQuery ));
+    // --></script>
+    {{ super() }}
+{% endblock -%}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}

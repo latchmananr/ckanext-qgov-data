@@ -1,0 +1,111 @@
+<h3>{{ _('Additional information') }}</h3>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th scope="col">{{ _('Field') }}</th>
+      <th scope="col">{{ _('Value') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if pkg_dict.version %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _("Version") }}</th>
+        <td class="dataset-details">{{ pkg_dict.version }}</td>
+      </tr>
+    {% endif %}
+
+    {% if h.check_access('package_update',{'id':pkg_dict.id}) and not pkg_dict.state == 'active' %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _("State") }}</th>
+        <td class="dataset-details">Deleted</td>
+      </tr>
+    {% endif %}
+
+    {% for extra in h.sorted_extras(pkg_dict.extras) %}
+      {% set key, value = extra %}
+      <tr rel="dc:relation" resource="_:extra{{ i }}">
+        <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
+        <td class="dataset-details" property="rdf:value">{{ value }}</td>
+      </tr>
+    {% endfor %}
+
+    {% if pkg_dict.groups %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _("Category") }}</th>
+        <td class="dataset-details">
+          {% if pkg_dict.groups|length > 1 %} 
+          <ul>
+            {% for group in pkg_dict.groups %}<li>{{ group.title }}</li>{% endfor %}
+          </ul>
+          {% else %}
+            {{ pkg_dict.groups[0].title }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+
+    <tr>
+      <th scope="row" class="dataset-label">{{ _('Licence') }}</th>
+      <td class="dataset-details">
+        {% if pkg_dict.license_id %}
+          {% if 'license_url' in pkg_dict %}
+            <a href="{{ pkg_dict.license_url }}" rel="dc:rights">{{ pkg_dict.license_title }}</a>
+          {% else %}
+            <span property="dc:rights">{{ pkg_dict.license_title }}</span>
+          {% endif %}
+          {% if not text_only %}
+            {% if pkg_dict.isopen %}
+            <a href="http://creativecommons.org/licenses/by/3.0/au/" title="{{ _('Creative Commons Attribution 3.0 Australia (CC BY 3.0)') }}"><img src="https://www.qld.gov.au/assets/v2/images/licences/{{ pkg_dict.license_id|replace('cc-', '') }}-80x15.png" alt="Creative Commons Attribution" /></a>
+              {% endif %}
+          {% endif %}
+        {% elif text_only %}
+          {{ _('No licence provided') }}
+        {% endif %}
+      </td>
+    </tr>
+
+     {% if pkg_dict.author_email %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _( h.portal_type('us') + ' custodian') }}</th>
+        <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email+ '?cc=onlineproducts@smartservice.qld.gov.au&subject=' + ('OpenData' if h.portal_type('site')=='data' else 'Publications') + ' feedback on: '+ h.dataset_display_name(pkg_dict), name=pkg_dict.author) }}</td>
+      </tr>
+    {% elif pkg_dict.author %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _( h.portal_type('us') + ' custodian') }}</th>
+        <td class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</td>
+      </tr>
+    {% elif pkg_dict.maintainer_email %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _( h.portal_type('us') + ' custodian') }}</th>
+        <td class="dataset-details" property="dc:contributor">{{ h.mail_to(email_address=pkg_dict.maintainer_email+ '?cc=onlineproducts@smartservice.qld.gov.au&subject=' + ('OpenData' if h.portal_type('site')=='data' else 'Publications') + ' feedback on: '+ h.dataset_display_name(pkg_dict), name=pkg_dict.maintainer) }}</td>
+      </tr>
+    {% elif pkg_dict.maintainer %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _( h.portal_type('us') + ' custodian') }}</th>
+        <td class="dataset-details" property="dc:contributor">{{ pkg_dict.maintainer }}</td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+<!--
+<h3>Contact data custodian</h3>
+<form action="//www.qld.gov.au/cgi-bin/emailform.pl" method="post" class="form">
+  <div class="control-group control-full">
+    <label for="field-notes" class="control-label hide">
+      <span class="label">Description</span>
+    </label>
+    <div class="controls">
+      <textarea placeholder="e.g. Some comment about the {{ h.portal_type('ls') }}" rows="5" cols="20" name="notes" id="dataset" class=""></textarea>
+    </div>
+  </div>
+  <div class="form-actions">
+    <p class="action-info small"><strong>Medical privacy</strong>: Please do not submit medical information through this form. If your complaint relates to Queensland Health, please use <a href="http://www.qld.gov.au/contact-us/complaints/"> Complaints and compliments form</a> and you will be contacted for more information by a Queensland Health representative.</p>
+    <button name="save" type="submit" class="btn btn-primary">Submit message</button>
+  </div>
+  <div>
+    <input type="hidden" name="recipient" value="{{ pkg_dict.author_email }}" />
+    <input type="hidden" name="redirect" value="{{ g.site_url }}/thanks" />
+    <input type="hidden" name="subject" value="{{ ('OpenData' if h.portal_type('site')=='data' else 'Publications') + ' feedback on: '+ h.dataset_display_name(pkg_dict) }}" />
+  </div>
+</form>
+-->

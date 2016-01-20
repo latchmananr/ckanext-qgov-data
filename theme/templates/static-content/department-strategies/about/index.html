@@ -1,0 +1,86 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Premier’s message') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="last-child">{{ _('Premier’s message') }}</li>
+{% endblock %}
+
+{% block primary %}
+    <h1>{{ _('Open data') }}</h1>
+    {% trans %}
+        <p>As a government, we collect, generate and use a lot of data. This data can deliver real benefits to the Queensland community and economy—if it is used in clever ways.</p>
+        <p>So that all Queenslanders can benefit from, and make use of, our data, we will be releasing as much of it as possible, free to anyone who wishes to use it. </p>
+        <p>Globally, the release of data has driven innovation, growth and job creation by the private sector, and directly benefited the community.</p>
+        <p>The open data initiative will: </p>
+        <ul>
+            <li>encourage people, companies, researchers and non-government organisations to develop innovative solutions to Queenslanders’ problems </li>
+            <li>help make government more transparent and accountable.</li>
+        </ul>
+        <p>The ‘need to share’ will now be the public service’s guiding principle.</p>
+        <p>The Open Data Initiative is part of the Queensland Public Sector Renewal Program and our vision to create the best public service in the nation, truly focused on our end customer—Queenslanders.</p>
+        <p>Queensland’s Public Sector Renewal is about making real improvements to the way government works and the services we deliver to Queenslanders.</p>
+        <p>An Assistant Minister to the Premier for eGovernment has been appointed to drive the Open Data agenda.</p>
+        <p>Becoming a world leader in Open Data is part of our strategy to build a great state with great opportunities.</p>
+        <ul>
+            <li><strong>Government data will be available for open use.</strong><br />
+                We will make our data openly available under flexible licences, allowing for reuse by the public, including by businesses, researchers and individuals.</li>
+            <li><strong>Government data will be available free.</strong><br />
+                We will make our data available free in future, unless the cost is set by law, or benefits the Queensland community and has been approved by Cabinet. </li>
+            <li><strong>Government data will be in accessible formats and easy to find.</strong><br />
+                We will make our data easily discoverable through <a href="http://www.qld.gov.au/data">www.qld.gov.au/data</a> in accessible formats that promote its reuse. </li>
+            <li><strong>Government data will be released within set standards and accountabilities.</strong><br />
+                We will make our data available in a timely and relevant manner, unless it is restricted for reasons of privacy, public safety, security, commercial confidentiality or compliance with the law. Each agency will be accountable for the release of good-quality data in accordance with set standards. </li>
+        </ul>
+        <h2>Benefits</h2>
+        <h3>The public</h3>
+        <p>Open data will:</p>
+        <ul>
+            <li>support the development of better and more timely public services and innovative solutions</li>
+            <li>encourage more interactive and mobile access to government information</li>
+            <li>make government more accountable to the community.</li>
+        </ul>
+        <h3>Businesses and researchers</h3>
+        <p>Open data will:</p>
+        <ul>
+            <li>support higher productivity and streamlining of business processes</li>
+            <li>drive innovation and stimulate the economy</li>
+            <li>support research and education</li>
+            <li>help reduce red tape through more efficient collection of data.</li>
+        </ul>
+        <h3>The public service</h3>
+        <p>Open data will:</p>
+        <ul>
+            <li>drive the delivery of more-efficient public services</li>
+            <li>help us collect valuable feedback to improve government services and processes</li>
+            <li>allow government to focus on delivering core public services</li>
+            <li>build increased transparency and public trust in government processes.</li>
+        </ul>
+        <h2>What is open data?</h2>
+        <p>Open data is focused on the basic or ‘raw’ data that we collect, generate and store.</p>
+        <p>This data comes in different forms. It’s things like the performance of our hospitals and schools, traffic information, crime statistics, geospatial data, demographic details and much more.</p>
+        <p>By its nature, raw data has had limited analysis and cross-checking. We will aim to release data that is correct, complete and up to date; however, users of this data must understand it may include inconsistencies—and realise that some information is not suitable for release on privacy or confidentiality grounds.</p>
+        <p>So that people using our data can do so effectively, agencies must provide it in a standard way. Agencies will:</p>
+        <ul>
+            <li>follow metadata standards</li>
+            <li>apply clear licences (preferably open licences such as Creative Commons)</li>
+            <li>assess and advise of data quality</li>
+            <li>outline any limitations on data use.</li>
+        </ul>
+ 
+<h2>Timetable for Delivery</h2> <table> <tr> <td>December 2012</td> <td>Queensland Government data portal operational and suitable datasets uploaded progressively</td> </tr> <tr> <td>March 2013</td> <td>Data event hosted for industry users of published datasets</td> </tr> <tr> <td>April 2013</td> <td>Each core departmental agency will publish an open data strategy, including a roadmap to release datasets</td> </tr> <tr> <td>October 2013</td> <td>Statutory bodies to publish an open data strategy, including a roadmap to release datasets</td> </tr> <tr> <td>December 2013</td> <td>Open data initiative reviewed to make sure it is delivering for Queenslanders</td> </tr> <tr> <td>Ongoing</td> <td>Progressive improvements to ensure we are meeting the highest standards of release</td> </tr> </table> 
+ 
+    {% endtrans %}
+
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/department-strategies"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

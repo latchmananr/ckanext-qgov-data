@@ -1,0 +1,17 @@
+<ul>
+	<li><a href="/">Home</a></li>
+	{% if h.check_access('package_create') %}
+	<li>{{h.nav_link(_('Add a ' + h.portal_type('ls')), controller='package', action='new') }}</li>
+	{% endif %}
+	<li>{{h.nav_link(_(h.portal_type('u')), controller='package', action='search') }}</li>
+	{% if h.portal_type('site')=='data' %}
+		<li>{{h.nav_link(_('Events'), controller='ckanext.qgov.data.controller:QGOVDataController', action='dataEvent')}}</li>
+		<li>{{h.nav_link(_('Strategies'), controller='ckanext.qgov.data.controller:QGOVDataController', action='departmentStrategies')}}</li>
+		<li>{{h.nav_link(_('Case studies'), controller='ckanext.qgov.data.controller:QGOVDataController', action='caseStudies')}}</li>
+		<li>{{h.nav_link(_('For developers'), controller='ckanext.qgov.data.controller:QGOVDataController', action='forDevelopers')}}</li>
+		<li>{{h.nav_link(_('Contact'), controller='ckanext.qgov.data.controller:QGOVDataController', action='contact')}}</li>
+	{% elif h.portal_type('site')=='publications' %}
+		<li><a href="/dataset/publishing-standards-publications-qld-gov-au">{{ _('Standards') }}</a></li>
+		<li>{{h.nav_link(_('Contact'), controller='ckanext.qgov.epub.controller:QGOVPublishingController', action='contact')}}</li>
+	{% endif %}
+</ul>

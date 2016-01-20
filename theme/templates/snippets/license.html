@@ -1,0 +1,14 @@
+{% if pkg_dict.license_id %}
+  {% if 'license_url' in pkg_dict %}
+    <a href="{{ pkg_dict.license_url }}" rel="dc:rights">{{ pkg_dict.license_title }}</a>
+  {% else %}
+    <span property="dc:rights">{{ pkg_dict.license_title }}</span>
+  {% endif %}
+  {% if not text_only %}
+    {% if pkg_dict.isopen %}
+    <a href="http://creativecommons.org/licenses/by/3.0/au/" title="{{ _('Creative Commons Attribution 3.0 Australia (CC BY 3.0)') }}"><img src="https://www.qld.gov.au/assets/v2/images/licences/{{ pkg_dict.license_id|replace('cc-', '') }}-80x15.png" alt="Creative Commons Attribution" /></a>
+      {% endif %}
+  {% endif %}
+{% elif text_only %}
+  {{ _('No licence provided') }}
+{% endif %}

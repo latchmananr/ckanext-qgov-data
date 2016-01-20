@@ -1,0 +1,60 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Using education and transport data to make roads safer for kids | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Case studiess') }}</a></li>
+    <li class="last-child">{{ _('Using education and transport data to make roads safer for kids') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Using education and transport data to make roads safer for kids') }}</h1>
+
+    <p>The Qld School Zones app helps keep kids safe in school areas by notifying drivers when they are approaching a designated Queensland school zone. The app recognises both state and non-government school zones and takes into account school and public holidays, meaning warnings are only given when school zones are active.  Developer Robert Crago says the app will end confusion around the location and status of school zones, increasing safety. </p>	
+
+    <div class="figure">
+	    <blockquote class="pull-quote">
+	    	<p>“Qld School Zone’s uses data being released by the Queensland Government under the open data initiative to increase safety around our schools.”</p>	
+			<p>“By using a smartphone’s in-built GPS, the app sends out a warning (via a combination of words, sound and/or vibration) when you are approaching a school zone.  You can also set the distance out from the school zone that you want the warning to sound.”</p>
+	   	</blockquote>
+	</div>
+
+    <h2>The data</h2>
+    <div class="cut-in">
+    	<img src="/assets/images/case-studies/school-children.jpg" alt="">
+    </div>
+    <p>Qld School Zones merges school location data from Education Queensland, school operating hours’ and council data from the Department of Transport and Main Roads.</p>
+
+	<h2>The user</h2>
+	<p>The Qld School Zones Android app was released in July 2014 and is available for download on the Android app store, with an iPhone version under development. Users can download this app to ensure they are always informed around the location of school zones and to help increase safety around schools.</p>
+	<h2>Speed limits in school zones</h2>
+	<p>Speeding through school zones greatly increases the risk to pedestrians as the faster a vehicle is travelling, the longer it takes to stop and the greater the severity of impact. Children are also impulsive, unpredictable and inexperienced, which is why motorists need to exercise caution in the vicinity of a school.</p>
+	<h2>Download the app</h2>
+	<p><a href="https://play.google.com/store/apps/details?id=com.revcomputing.schoolzones">Download the QLD School Zones app</a> for your Android device.</p>
+	<p>&nbsp;</p>
+{% endblock %}
+
+{% block aside %}
+	<div class="aside">
+		<h2>QLD School Zones app</h2>
+		<p>Download the QLD School Zones app for your Android devices</p>
+		<img src="/assets/images/case-studies/qld-school-zones.jpg" alt="" />
+		<div class="actions"><ul><li><strong><a class="button" href="https://play.google.com/store/apps/details?id=com.revcomputing.schoolzones">Download app</a></strong></li></ul></div>
+	</div>
+	{% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+	<script type="text/javascript"><!--
+		(function( $ ) {
+			'use strict';
+
+			$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+		}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

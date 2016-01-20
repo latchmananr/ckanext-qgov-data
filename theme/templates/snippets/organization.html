@@ -1,0 +1,33 @@
+{#
+Embeds a organization within the sidebar of a page.
+
+organization    - The organization dict.
+truncate - A max length for the organization description. If not provided the description
+           will be full length.
+has_context_title - Boolean for whether to display a module-heading for when
+                    this snippet appears within a non-organization template
+                    (e.g. dataset page sidebar)
+
+Example:
+
+    {% snippet 'snippets/organization, organization=c.group_dict %}
+
+#}
+
+{% set truncate = truncate or 0 %}
+{% set url = h.url_for(controller='organization', action='read', id=organization.name) %}
+
+  {% block info %}
+  <div class="aside">
+    {% if has_context_title %}
+      <h2>{{ _(h.portal_type('us') + ' custodian') }}</h2>
+    {% endif %}
+      <h3>{{ organization.title or organization.name }}</h3>
+      {% if organization.description %}
+        <p>
+          {{ h.render_markdown(organization.description) }}
+        </p>
+      {% endif %}
+      <p class="more"><a href="{{ url }}">{{ _('View all ' + h.portal_type('lss')) }}</a></p>
+  </div>
+  {% endblock %}

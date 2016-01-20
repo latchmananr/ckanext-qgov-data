@@ -1,0 +1,34 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Open Data Mixer | Premier’s Awards for Open Data | Events') }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('Events') }}</a></li>
+    <li><a href="/data-event/premiers-awards">{{ _('Premier’s Awards for Open Data') }}</a></li>
+    <li class="last-child">{{ _('Open Data Mixer') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Open Data Mixer') }}</h1>
+    {% trans %}
+        
+    <p>The Open Data Mixer was held on Saturday 31 August 2013 at the TransLink Centre for Service Excellence, Brisbane. The event included discussion panels, question-and-answer sessions and a keynote address from founder and director of the Open Knowledge Foundation and Shuttleworth Foundation Fellow, <a href="http://rufuspollock.org/about/">Dr Rufus Pollock</a>.</p>
+
+    <p>The event was recorded and is available to <a href="http://register.webcastcloud.com.au/qldpremier/opendatamixer/august2013">view on demand</a>.</p>
+    {% endtrans %}
+{% endblock %}
+
+{% block aside %}
+    {% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-event-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/data-event"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

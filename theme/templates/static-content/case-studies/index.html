@@ -1,0 +1,71 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Case studies") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li class="last-child">{{ _('Case studies') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Case studies') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+            <ul id="flex-grid">
+                <li class="d1"><h2><a href="/static-content/case-studies/open-data/">
+                        <span class="link-text">Open Data case study</span>
+                        <img src="/assets/images/floodcheck-thumbnail.png" alt="" />
+                    </a></h2>
+                    <p>State Library of Queensland uses Queensland open data to populate and validate Queensland addresses entered in SLQ’s online membership registration form.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/brisbane-bus-train-app/">
+                        <span class="link-text">Travelling around Brisbane on public transport just got easier</span>
+                        <img src="/assets/images/case-studies/brisbane-bus-train-app-thumb.jpg" alt="" />
+                    </a></h2>
+                    <p>The Brisbane Bus and Train app uses Queensland open data to provide users with arrival times and stop locations of Brisbane buses and trains.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/pocket-zoner/">
+                        <span class="link-text">Placing land zoning information in the hands of users</span>
+                        <img src="/assets/images/case-studies/pocket-zoner-thumb.jpg" alt="" />
+                    </a></h2>
+                    <p>Pocket Zoner Pro provides easy access to town planning information for over two million properties in Queensland.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/qld-school-zones/">
+                        <span class="link-text">Using education and transport data to make roads safer for kids</span>
+                        <img src="/assets/images/case-studies/qld-school-zones-thumb.jpg" alt="" />
+                    </a></h2>
+                    <p>The Qld School Zones app helps keep kids safe in school areas by notifying drivers when they are approaching a designated Queensland school zone.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/weather-data/">
+                        <span class="link-text">Weather data for irrigation scheduling/crop modelling</span>
+                        <img src="/assets/images/case-studies/weather-data-sugar-cane-thumb.png" alt="" />
+                    </a></h2>
+                    <p>Historical weather information for Queensland helps sugarcane producers to plan their irrigation needs.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/wildlife-data/">
+                        <span class="link-text">Sharing Queensland wildlife data</span>
+                        <img src="/assets/images/case-studies/wildlife-data-atlas-thumb.png" alt="" />
+                    </a></h2>
+                    <p>WildNet helps to provide free access to information on Australia’s flora and fauna.</p>
+                </li>
+                <li class="d1"><h2><a href="/case-studies/multiple-soil-datasets/">
+                        <span class="link-text">Using multiple soil datasets to inform client decision-making</span>
+                        <img src="/assets/images/case-studies/multiple-soil-datasets-thumb.png" alt="" />
+                    </a></h2>
+                    <p>Soil and mapping datasets in <acronym title="Geographic Information System">GIS</acronym> format help to support strategic investment and development decision-making.</p>
+                </li>
+            </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}{% endblock -%}
+
+{% block aside %}
+    {% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}

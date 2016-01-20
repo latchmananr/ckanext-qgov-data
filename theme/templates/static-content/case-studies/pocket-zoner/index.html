@@ -1,0 +1,62 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Placing land zoning information in the hands of users | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Case studiess') }}</a></li>
+    <li class="last-child">{{ _('Placing land zoning information in the hands of users') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Placing land zoning information in the hands of users') }}</h1>
+
+    <div class="figure">
+	    <blockquote class="pull-quote">
+			<p>Without open data the Pocket Zoner app simply would not be as functional and useful for on the go users</p>
+		</blockquote>
+	</div>
+
+	<p>Town planner and developer Michael Arnold has managed to dramatically reduce the time to access town planning information for over two million properties across Queensland and other states. Users of the Pocket Zoner Pro can run the app to find the property of interest, order a town planning assessment and ask a planner questions, all for free. Obtaining title details from the selling agent means users can instantly obtain the land zoning and local government area of the property, giving them an edge when considering buying a property. This allows users to quickly find out what the property can be used for, and whether it could be developed through a subdivision.</p> 
+
+ 	
+	<h2>The need</h2>
+	<div class="cut-in">
+    	<img src="/assets/images/case-studies/pocket-zoner-cut-in.jpg" alt="">
+    </div>
+	<p>Pocket Zoner Pro was developed to solve the need for instant zoning and local government information when not at home or in the office. As a town planner, Developer Michael Arnold says he has even used Pocket Zoner Pro while sitting in the office because it finds the land zoning in about three seconds from the cloud, rather than navigating Council web sites for minutes on a lap top or desktop computer. Michael says this technology allows users to find valuable, accurate information rather than relying on usual methods such as RP data which is simply not accurate for land zoning.</p>
+	
+	<p>Prior to creating Pocket Zoner Pro Michael considered how technology would impact his business. Having seen an escalation of business generated from his website to more than 50% over 10 years, Michael considered what would be the next ‘big thing’ for his businesses. What would people buying and selling property need to know? From a town planning and land use perspective the answer was ‘land zoning’ or finding out what can be done with a property in order to determine its value. Michael combined this idea with Queensland Government openly available property data, and the Pocket Zoner Pro was born.</p>
+	<p>Developer Michael Arnold says “without open data the Pocket Zoner app simply would not be as functional and useful for on the go users.”</p>
+
+	<h2>Download the app</h2>
+	<p><a href="https://itunes.apple.com/au/app/pocket-zoner-pro/id741274047?mt=8">Download the Pocket Zoner Pro app</a> for your iOS device.</p>
+	<p>&nbsp;</p>
+{% endblock %}
+
+{% block aside %}
+	<div class="aside">
+		<h2>Pocket Zoner Pro app</h2>
+		<p>More information about the <a href="http://www.adcqld.com.au/announcing-the-pocket-zoner-pro-version-2-1/">Pocket Zoner Pro Version 2.1</a>.</p>
+		<div class="actions" style="margin-top: 1em; margin-bottom:1em;">
+			<ul><li><strong><a class="button" href="https://itunes.apple.com/au/app/pocket-zoner-pro/id741274047?mt=8">Download Pocket Zoner Pro (iOS)</a></strong></li></ul>
+		</div>
+		<p>&nbsp;</p>
+		<img src="/assets/images/case-studies/pocket-zoner-aside-1.jpg" alt="" />
+	</div>
+	{% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+<script type="text/javascript"><!--
+	(function( $ ) {
+		'use strict';
+
+		$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+	}( jQuery ));
+	// --></script>
+	{{ super() }}
+{% endblock -%}

@@ -1,0 +1,235 @@
+{% extends "page.html" %}
+
+{% block bodytag %} data-site-root="{{ h.url('/', locale='default', qualified=true) }}" data-locale-root="{{ h.url('/', qualified=true) }}" data-api-root="{{ g.api_url }}" class="home"{% endblock %} 
+
+{% block subtitle %}{% endblock %}
+
+{% block maintag %}{% endblock %}
+
+{% block content %}
+<div id="page-container"><div class="max-width">
+  <div id="content-container">
+    <div id="content">
+      <div class="article"><div class="box-sizing"><div class="border">
+        {% snippet [h.beta_or_prod_asset(),'global-alert.html']|join, full_current_url=h.full_current_url() %}
+        <h1 class="visuallyhidden">data.qld.gov.au</h1>
+        {% snippet [h.beta_or_prod_asset(),'page-options-pre.html']|join, full_current_url=h.full_current_url() %}
+        {{ self.search_content() }}
+        {{ self.tags() }}
+        <div class="content-row features"><div class="content-module">
+          <div class="modules">
+            {{ self.featured_dataset() }}
+            {{ self.for_developers() }}
+            {{ self.top_publishers() }}
+          </div>
+        </div></div>
+        {{ self.news_content() }}                 
+      </div></div></div>
+      <!-- end .article, .box-sizing, .border -->
+    </div>
+    <div id="meta-wrapper"><div class="meta-box-sizing"><div class="border">
+      {% snippet [h.beta_or_prod_asset(),'page-options-post.html']|join, full_current_url=h.full_current_url() %}
+    </div></div></div><!-- end #meta-wrapper, .meta-box-sizing, .border -->
+  </div>
+</div></div>
+{% endblock %}
+
+{% block search_content %}
+<div class="content-row main-search">
+  <div class="content-module section" id="main">
+    <div id="main-sections">
+      <div class="section" id="feature-search">
+        <div class="section-header"><h2>{{ _('Search ' + h.portal_type('lss')) }}</h2></div>
+        <div class="contents">
+          <form method="get" action="{% url_for controller='package', action='search' %}">
+            <div class="search-wrapper">
+              <label for="search-query-primary" class="visuallyhidden">{{ _('Search for Queensland Government ' + h.portal_type('lss')) }}</label>
+              <input accesskey="6" type="text" name="q" id="search-query-primary" size="30" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('Search for Queensland Government datasets') }}"/>
+              <div class="submit"><button id="feature-search-submit">{{ _('Search ' + h.portal_type('lss')) }}</button></div>
+            </div>
+          </form>
+        </div>
+        <p>There are <a href="{% url_for controller='package', action='search' %}">{{ c.package_count }} datasets ({{ h.resource_count() }} resources)</a> that you can browse, learn about and download.</p>
+      </div>
+      <!-- end #feature-search -->
+    </div>
+  </div><!-- end #main -->
+</div>
+{% endblock %}
+
+{% block outage %}
+<div class="content-row notice">
+  <div class="content-module">
+    <div class="status warn" id="home-outage-notice">
+      <div class="section-header"><h2>Outage notice</h2></div>
+      <p>This site will be briefly unavailable due to scheduled maintenance on <strong>Wednesday 9 April between 8.00 and 8.15pm</strong>. The outage should be no more than 5 minutes, before normal service resumes.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block tags %}
+<div class="content-row data-tags">
+  <div class="content-module">
+    <div id="home-tags">
+      <div class="section-header"><h2 id="home-top-tags">Top tags</h2></div>
+      <ul>
+          <!-- noindex -->
+          {% for tag_dict in h.random_tags()|sort(reverse=true,attribute='count') %}
+            <li><a href="/tag/{{ tag_dict.name }}">{{ h.truncate( tag_dict.name, 20 ) }} <span>{{ tag_dict.count }}</span></a></li>
+          {% endfor %}
+          <!-- endnoindex -->
+          <li><a title="More tags" href="/tag" class="">More&hellip;</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block for_developers %}
+<div class="aside"><div class="aside-inner">
+  <h2 id="home-for-developer">{{ _('For developers') }}</h2>
+  <ul>
+    <li><a href="/dataset">Datasets for your mashups</a></li>
+    <li><a href="/for-developers/register-your-app">Register your app for our showcase</a></li>
+    <li><a href="/other-data">Other data types</a></li>
+    <li><a href="https://publications.qld.gov.au/dataset/publishing-standards-data-qld-gov-au">Data standards</a></li>
+    <li><a href="/maps-geospatial/qld-globe">Queensland Globe </a></li>
+    <li><a href="http://docs.ckan.org/en/latest/api/index.html">API guide</a></li>
+  </ul>
+  <p class="more"><a title="Read more about: For developers" href="/for-developers">More…</a></p>
+</div></div>
+{% endblock %}
+
+{% block top_publishers %}
+<div class="aside"><div class="aside-inner">
+  <h2 id="home-top-publishers">{{ _('Top publishers') }}</h2>
+  {% if h.top_organisations() %}
+    <ul>
+    {% for group, num_packages in h.top_organisations(limit=5) %}
+      {% if num_packages > 0 and (group.title or group.name) %}
+      <li>{{ h.link_to(group.title or group.name, h.url_for(controller='organization', action='read', id=group.name)) }} ({{ num_packages }})</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+  <p class="more"><a title="Read more about: Top publishers" href="/organization">More&hellip;</a></p><p>&nbsp;</p>
+</div></div>
+{% endblock %}
+
+{% block featured_dataset %}
+<div class="aside featured-data">
+</div>
+{% endblock %}
+
+{% block news_content %}
+<div class="content-row announcements">
+  <div class="content-module">
+    <div class="section-header"><h2>Latest news</h2></div>
+    <div class="slide-runner news-items">
+
+      <div class="section"><a href="/static-content/data-event/govhack/2015"><img src="/assets/images/news/govhack-2015.jpg" alt=""/></a><h3>GovHack 2015</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">24 June 2015</dd></dl><p>After the success of GovHack 2014, the Queensland Government is on board again this year as a sponsor! </p><p class="more"><a href="/static-content/data-event/govhack/2015" title="Read more about: GovHack 2015">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="http://www.opendata500.com/au/"><img src="/assets/images/news/open-data-500.jpg" alt=""/></a><h3>Open Data 500 Australia survey</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">24 March 2015</dd></dl><p>Companies and NGOs that use open government data can take part in the Australian Open Data 500 Project and help shape the future of open data.</p><p class="more"><a href="http://www.opendata500.com/au/" title="Read more about: Open Data 500 Australia survey">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="/announcements/#web-address-changes"><img src="/assets/images/news/web-address-changes.jpg" alt=""/></a><h3>Queensland Government data web address changes</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">10 March 2015</dd></dl><p>Due to department changes, some Queensland Government data web addresses have been updated.</p><p class="more"><a href="/announcements/#web-address-changes" title="Read more about: Queensland Government data web address changes">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="/data-event/premiers-awards/about"><img src="/assets/images/news/premiers-awards.jpg" alt=""/></a><h3>Premier’s Open Data Awards winners announced</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">5 December 2014</dd></dl><p>Find out who won, and watch videos from the winning entrants.</p><p class="more"><a href="/data-event/premiers-awards/about" title="Read more about: Premier's Open Data Awards announced">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="http://odiqueensland.org.au/"><img src="/assets/images/news/open-data-institute.jpg" alt=""/></a><h3>Open Data Institute</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">5 December 2014</dd></dl><p>ODIQ is the first Australian based international node of the Open Data Institute, created by Sir Tim Berners-Lee and Sir Nigel Shadbolt. Explore ODIQ and find out how you can get involved.</p><p class="more"><a href="http://odiqueensland.org.au/" title="Read more about: Open Data Institute">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="/case-studies"><img src="/assets/images/news/case-studies.jpg" alt=""/></a><h3>Case studies</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">21 August 2014</dd></dl><p>Read case studies on how Queensland Government data has been used innovatively by various industries and what the benefits are.</p><p class="more"><a href="/case-studies/" title="Read more about: Case studies">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="/maps-geospatial/qld-globe"><img src="/assets/images/news/qld-globe.jpg" alt="Queensland Globe"/></a><h3>Queensland Globe</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">28 March 2013</dd></dl><p>Check out Queensland Globe. See overlays like recent flood levels, lot and plan information and the latest Queensland aerial and satellite imagery.</p><p class="more"><a href="/maps-geospatial/qld-globe" title="Read more about: Queensland Globe">More&hellip;</a></p></div></div>
+
+      <div class="section"><a href="https://www.qld.gov.au/ictdashboards"><img src="/assets/images/ictdashboard.jpg" alt=""/></a><h3>Information and communication technology (ICT) dashboard</h3><div class="news-content"><dl class="meta"><dt class="date-posted">Posted</dt><dd class="date-posted">29 August 2013</dd></dl><p>Track how ICT initiatives are progressing across Queensland Government with the new ICT dashboard. Reports include budget, cost to date and current status.</p><p class="more"><a href="https://www.qld.gov.au/ictdashboards" title="Read more about: ICT dashboard">More&hellip;</a></p></div></div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {%- set history_feed = h.url(controller='revision', action='list', format='atom', days=1) -%}
+  <link rel="alternate" type="application/atom+xml" title="{{ g.site_title }} - {{ _('Recent Revision History') }}" href="{{ history_feed }}" />
+{% endblock %}
+
+{%- block scripts %}
+  <script type="text/javascript"><!--
+    (function( $, qg ) {
+      'use strict';
+
+      var table = (window.location.href.indexOf("staging.data.qld.gov.au") > -1 ? '501a7f8c-51d7-44fb-9cef-90f7b2b270d4' : '4712c72a-5fa5-4782-bda3-4a0d95877b5c'  ),
+        d = new Date(),
+        numNum = d.getDay() + 1,  // getDay starts at 0 - add one to start at 1
+        dayNum = d.getDate(),     // getDate starts at 1
+        monNum = d.getMonth() +1, // getMonth starts at 0 - add one to start at 1
+        yeaNum = d.getFullYear(),
+        displayFeature,
+        startFeature,
+        getFeature,
+        getWeekStart
+      ;
+
+      displayFeature = function( jsonData  ) {
+      
+        var resultsHTML = '',
+            results = $( '.content-row.features .aside.featured-data' )
+        ;
+        results.empty();
+
+        if ( jsonData.result.records.length > 0 ) {
+          var $row = jsonData.result.records[jsonData.result.records.length - 1];       
+            resultsHTML += '<div class="aside-inner">';
+              resultsHTML += '<h2 id="home-featured-dataset">Featured data</h2>';
+              resultsHTML += '<div class="feature">';
+                resultsHTML += '<h3>' + $row['Dataset'] + '</h3>';
+                $row['Image'] != '' ? (resultsHTML += '<img src="' + $row['Image'] + '">') : void(0);;
+                resultsHTML += '<p>' + $row['Description'] + '</p>';
+                $row['Preview'] != '' ? (resultsHTML += '<p class="actions" style="padding-left:0.5em;"><strong><a target="_blank" class="button" href="' + $row['Preview'] + '">Visualisation preview</a></strong></p>') : void(0);
+              resultsHTML += '</div>';
+              resultsHTML += '<p class="more"><a title="Read more about: ' +  $row['Dataset'] + '" href="' + $row['Url'] + '">More…</a></p>';
+            resultsHTML += '</div>';
+          $( results ).append( resultsHTML );
+        } 
+      };
+
+      startFeature = function() {
+        // get todays feature if today is start of week (getFeature
+        // if today is not start of week determine what that is (getWeekStart)
+        // includes: set day and month format to include a 0 if less than 10 - needed for SQL date format
+        // check if numNum == 2 (aka is it monday)
+        numNum == 2 ? getFeature(yeaNum + '-' + ((monNum < 10) ? monNum = '0' + monNum : monNum) + '-' + ((dayNum < 10) ? dayNum = '0' + dayNum : dayNum) + 'T00:00:00') : getWeekStart();
+      };
+
+      getWeekStart = function( ) {
+
+        if (numNum < 2){
+          // if sunday (day 1) roll back the date 6 days to previous monday (weekstart for features is monday not sunday)
+          d.setDate(d.getDate() - 6);
+        } else {
+          // take away the difference between today and day 1 (Start of week)
+          d.setDate(d.getDate() - numNum + 2);
+        }
+        // update d(date) 
+        numNum = d.getDay() + 1;
+        dayNum = d.getDate();
+        monNum = d.getMonth() + 1;
+        yeaNum = d.getFullYear();
+        // retry startFeature with updated date
+        startFeature();
+      };
+
+      getFeature = function( dateSearch ) {
+        //query opendata for this weeks feature
+        var domain = (window.location.href.indexOf("staging.data.qld.gov.au") > -1 ? 'staging.data.qld.gov.au' : 'data.qld.gov.au'  );
+        var sql = 'SELECT * from \"' + table + '\" where \"Week\" = \'' + dateSearch + '\' or \"_id\" = 1 ';
+        qg.data.get( domain, sql, displayFeature );
+      };
+      startFeature();
+      
+    }( jQuery, qg ));
+  //--></script><!-- end -->
+  {{ super() }}
+{% endblock -%}

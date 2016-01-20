@@ -1,0 +1,87 @@
+#nav-site {
+    padding: 0;
+}
+
+#nav-site .max-width {
+    padding: 0 0 1em;
+}
+
+#nav-site .max-width ul {
+    margin: 0 3.125em;
+}
+
+.home .main-search {
+    padding: 0;
+}
+
+.home #main #feature-search {
+    height: 8.25em;
+}
+
+.home #main #feature-search .contents {
+    width: 100%;
+}
+
+.home #main #feature-search .contents #search-query-primary {
+    float: left !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 99%;
+}
+
+.home #main #feature-search .contents #search-query-primary:before {
+    background: transparent !important;
+}
+
+.home #main #feature-search .contents .search-wrapper .submit {
+    float: right !important;
+}
+
+.home .main-search p {
+    clear: both;
+    float: none;
+    margin-top: 0.7em;
+    padding-top: 0.7em;
+    text-align: center;
+}
+
+.home .notice {
+    background: #f9f9f9;
+    padding-bottom: 0;
+}
+
+.home .notice .status {
+    margin-bottom: 0;
+}
+
+#home-tags {
+    margin: 0;
+}
+
+.home .features .modules .aside,
+.home .features .modules .aside-inner {
+    padding: 0;
+}
+
+.home .features .modules .aside {
+    float: left;
+    width: 50%;
+}
+
+.home .features .modules .featured-data {
+    clear: both;
+    float: none;
+    width: 100%;
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #ececec;
+}
+
+.home .features .modules .aside-inner {
+    width: 85%;
+}
+
+.home .features .modules .featured-data .aside-inner {
+    width: 100%;
+}

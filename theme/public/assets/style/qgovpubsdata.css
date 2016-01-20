@@ -1,0 +1,803 @@
+/* =================================================================================*/
+/* Core template */
+/* --------------------------------------------------------------------------------*/
+body {
+    background: #fff;
+}
+
+*::-webkit-input-placeholder {
+    margin-top: 0.8em;
+    padding: 0;
+    color: #ccc !important;
+}
+
+:-moz-placeholder {
+    color: #ccc !important;
+}
+
+::-moz-placeholder {
+    color: #ccc !important;
+}
+
+:-ms-input-placeholder {
+    color: #ccc !important;
+}
+
+
+[role="main"], .main {
+    background: none !important;
+    padding: 0 !important;
+}
+
+[role="main"] {
+    min-height: 0 !important;
+}
+
+input[type="text"], input[type="password"], input[type="search"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="time"], input[type="datetime"], input[type="number"], select, textarea {
+    box-sizing: inherit;
+}
+
+#search-query-primary, #search-query {
+    height: auto;
+    margin-bottom: 0;
+}
+
+#search-query-primary {
+    vertical-align: baseline;
+}
+
+#banner img {
+    vertical-align:baseline;
+    height: inherit;
+    max-width: inherit;
+}
+
+#nav-site .active, #nav-site .active:link, #nav-site .active:visited {
+    color: #78BA00 !important;
+}
+
+#nav-site .max-width {
+    background: #002d51;
+    padding: 0;
+}
+
+#nav-site .max-width ul li a:link,
+#nav-site .max-width ul li a:visited {
+    color: #ffffff;
+}
+
+#nav-site .max-width ul li a:hover,
+#nav-site .max-width ul li a:active {
+    color: #78BA00;
+}
+
+.nav-tabs {
+    background: linear-gradient(to bottom, #efedee 0%, #ffffff 100%) repeat-x scroll 0 0 / auto 74px rgba(0, 0, 0, 0);
+    margin-top: 0;
+    padding-top: 5px;
+}
+
+#nav-section ul li.currentpage, #nav-section ul li.currentpage a:link, #nav-section ul li.currentpage a:visited {
+    color: #fff;
+}
+
+#nav-section ul li.currentpage {
+    background: none repeat scroll 0 0 #007eb1;
+}
+
+.nav-tabs {
+    background: none !important;
+}
+
+.gravatar {
+    display: none !important;
+
+}
+
+.activity .item p {
+    margin: 5px 0 0 40px;
+}
+
+.module-content {
+    padding: 0 0;
+    margin: 20px 0;
+}
+
+html:not([ie8andbelow]) #qg-coa img {
+    width: 287px\9\0;
+    height: 50px\9\0;
+}
+
+.page-header .content_action {
+    margin-right: 7px;
+}
+
+body.env-staging {
+    background: url('/assets/images/skin/env-staging.jpg') repeat-x;
+    background-attachment: fixed;
+}
+
+#header-wrapper .box-sizing .max-width {
+    background: rgba(0,0,0,.04);
+}
+
+#header-wrapper .box-sizing, #qg-coa {
+    background: none;
+}
+
+#asides .actions {
+    position: relative;
+}
+
+/* =================================================================================*/
+/* Form styles
+/* --------------------------------------------------------------------------------*/
+legend {
+    font-size: 100%;
+    line-height: 1.5;
+}
+
+legend small {
+    color: #444;
+    font-size: 80%;
+}
+
+label {
+    color: #444;
+    display: block;
+    margin-bottom: 0;
+}
+
+label, input, button, select, textarea {
+    font-size: 100%;
+    color: #444;
+}
+
+#feature-search h2, #feature-search input {
+    line-height: 1rem;
+}
+
+label small.hint {
+    color: #444 !important;
+}
+
+input, textarea {
+    transition: none;
+}
+
+input, textarea, select, .uneditable-input {
+    width: auto;
+    height: auto;
+}
+
+input.focus, textarea.focus {
+    outline: inherit;
+}
+
+.label {
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    font-weight: normal;
+    font-size: 100%;
+    line-height: 1.5;
+    vertical-align: baseline;
+    white-space: normal;
+    color: #444;
+    text-shadow: none;
+}
+
+ul.actions {
+    position: relative !important;
+}
+
+.btn-primary, .btn-success {
+    color: #fff !important;
+}
+
+.btn, .btn-primary, .btn-success {
+    text-decoration: none !important;
+}
+
+label.control-label {
+    position: relative;
+}
+
+label.control-label abbr.required {
+    position: absolute;
+    margin-left: -1em;
+    top: .5em;
+}
+
+
+/* =================================================================================*/
+/* Dataset page
+/* --------------------------------------------------------------------------------*/
+.resource-item h3 {
+    margin: -0.5em 0 0 0;
+}
+
+.module-resource {
+    border: none !important;
+}
+
+.actionbar {
+    text-align: center;
+}
+.actionbar a {
+    margin: 0.3em;
+}
+.dataset-resources li a {
+    font-size: 0.7em;
+}
+
+
+/* =================================================================================*/
+/* Resource page
+/* --------------------------------------------------------------------------------*/
+
+#field-image-url {
+    width: 85%;
+}
+
+#field-name {
+    width: 94%;
+}
+
+.module-content .actions form {
+    margin: 0.75em 0;
+}
+
+.module-content .actions ul {
+    padding: 0;
+}
+
+
+.resource-list .api {
+    background-color: #ea6f00;
+    border-radius: 3px 3px 3px 3px;
+    color: #EEEEEE;
+    padding: 0.1em 0.5em;
+    text-decoration: none;
+    font-size: 0.6em;
+    font-weight: bold;
+    position: absolute;
+    z-index: 10;
+    top: 35px;
+    left: 15px;
+}
+
+.nav-item.active>a span, .nav-aside li.active a span {
+    white-space: normal;
+}
+
+.module-content .actions {
+    margin: 0px 0 -1.5em 0;
+    width: 100%;
+    top: -1.3em;
+}
+.module-content .actions ul {
+    float: right;
+}
+.module-content:first-child {
+    padding-top: 0;
+}
+a.resource-definition {
+    text-decoration: none;
+}
+
+/* =================================================================================*/
+/* Resource datastore page
+/* --------------------------------------------------------------------------------*/
+/* remove SWE hover alert style */
+li.item:hover:before {
+    content: "";
+    display: table;
+}
+
+
+/* =================================================================================*/
+/* Activity page
+/* --------------------------------------------------------------------------------*/
+
+.icon {
+    top: -1em !important;
+    left: -1em !important;
+}
+
+/* =================================================================================*/
+/* Search page
+/* --------------------------------------------------------------------------------*/
+
+label:after {
+    content: "" !important;
+}
+
+label, input, button, select, textarea {
+    font-size: 100%;
+    color: #444;
+}
+
+.search-form h2 {
+    font-size: inherit;
+}
+
+.search-form .control-order-by {
+    float: none;
+    margin: 0;
+}
+
+.search-form select {
+    height: inherit;
+}
+
+h3.dataset-heading {
+    font-weight: normal;
+}
+
+.dataset-resources .label {
+    display: inherit;
+}
+
+ul.dataset-list, ul.dataset-resources {
+    padding: 0;
+}
+
+.dataset-resources li a {
+    background-color: #2D809D;
+    border-radius: 3px 3px 3px 3px;
+    color: #EEEEEE;
+    padding: 0.1em 0.5em;
+    text-decoration: none;
+}
+
+div.search-result ul.dataset-list ul.dataset-resources li a, li.nav-item a[href^='/dataset?res_format'] {
+    text-transform:uppercase;
+}
+.dataset-content span.label, .resource-item span.label {
+    display: inline;
+    font-size: 70%;
+    padding: 0 2em 0 0;
+}
+
+.filter-list span.pill  {
+    background-color: #2D809D;
+    border-radius: 3px 3px 3px 3px;
+    padding: 0.1em 0.5em;
+    text-decoration: none;
+}
+
+.filter-list a.remove {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-item > a {
+    padding: 7px 25px 7px .5em;
+}
+
+.nav-simple > li, .nav-aside > li {
+    padding: 0.5em;
+}
+
+.nav-item > a, .nav-aside li a {
+}
+
+.nav-item.active > a:before {
+    background-image: none; /*removes right arrow */
+}
+
+.nav-item.active span {
+    color: #fff !important;
+}
+
+.nav-facet .nav-item > a:hover:after,
+.nav-facet .nav-item.active > a:after {
+    right: 8px !important;
+}
+
+.nav-facet .nav-item > a:hover:after {
+    display: inline-block;
+    vertical-align: text-bottom;
+    top: 2px;
+    right: 0px !important;
+    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    background-position: -17px -16px;
+    content: "";
+    position: relative;
+    float: right;
+    margin-top: 0;
+    margin-right: 0 !important;
+}
+
+.nav-facet .nav-item.active > a:hover:after {
+    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-position: 0 -16px;
+    margin-right: 1px !important;
+    margin-top: -1.4em;
+    color: #fff;
+}
+
+.module-narrow .nav-item > a, .module-narrow .nav-aside li a {
+    padding-left: 0.5em;
+    padding-right:  0.5em;
+}
+
+.nav-item.active > a, .nav-aside li.active a {
+    background-color: #2D809D;
+}
+
+.remove {
+    display: inline-block;
+    vertical-align: text-bottom;
+    top: 2px;
+    right: 0px !important;
+    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-position: 0 -16px;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    content: "";
+    position: relative;
+    float: right;
+    margin-top: 0;
+    margin-left: 0.5em  !important;
+
+}
+
+#asides .module-heading {
+    background: none;
+}
+
+.pagination {
+    height: 60px !important;
+}
+
+/* =================================================================================*/
+/* Index page
+/* --------------------------------------------------------------------------------*/
+.theme-index-with-asides #ia .d1 {
+    height: inherit !important;
+    width: 100% !important;
+    float: none !important;
+}
+
+
+/* =================================================================================*/
+/* Homepage
+/* --------------------------------------------------------------------------------*/
+
+.home #main #feature-search .contents button#feature-search-submit:before, .home #main #feature-search .contents button#feature-search-submit:hover:before {
+    padding: 0.72em !important;
+}
+
+.home #main-sections a:link,
+.home #main-sections a:visited {
+    color: #ffffff;
+}
+
+.home #main-sections a:hover,
+.home #main-sections a:active {
+    color: #78BA00;
+}
+.home .notice,
+.home .data-tags {
+    background: #f9f9f9;
+}
+
+.home .features {
+    border-bottom: 2px solid #ececec;
+}
+
+.home .aside.featured-data img {
+    margin-right: 1em;
+    float: left;
+    background: none repeat scroll 0 0 #f9f9f9;
+    border: 1px solid #fffefc;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    display: block;
+    left: 13px;
+    top: 1em;
+}
+.home #main #feature-search .contents button#feature-search-submit:before,
+.home #main #feature-search .contents button#feature-search-submit:hover:before {
+    padding: 0.725em !important;
+}
+
+.home .main-search {
+    background: #00335b;
+}
+
+.home .main-search p {
+    clear: both;
+    color: #ffffff;
+    font-size: .9rem;
+}
+
+.home .data-tags:before,
+.home .data-tags:after {
+    content: " ";
+    display: table;
+}
+
+.home h2#home-top-tags {
+    color: #005474;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.home .features:before,
+.home .features:after,
+.home .features .modules:before,
+.home .features .modules:after {
+    content: " ";
+    display: table;
+}
+
+.home .features .modules:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+}
+
+.home .features .modules .aside {
+    float: left;
+    display: inline-block;
+}
+
+.home .features .modules h2 {
+    margin-left: 0;
+    padding-left: 1em !important;
+}
+
+.home .features .modules .featured-data h2 {
+    padding-left: 0 !important;
+}
+
+.home .features .modules ul {
+    margin-left: 1.8em;
+}
+
+.home .features .modules li {
+    line-height: 2rem !important;
+    font-size: 1rem;
+}
+
+.home .features .modules p {
+    padding: 0;
+}
+
+.home .announcements {
+    clear: both;
+}
+
+#home-top-tags:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.0rem;
+    line-height: 1;
+    padding-right: 1rem;
+    content: "\f02b";
+    text-decoration: inherit;
+    background: inherit;
+    color: #7ab800;
+}
+
+#home-top-publishers:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.0rem;
+    line-height: 1;
+    padding-right: 1rem;
+    content: "\f02d";
+    text-decoration: inherit;
+    background: inherit;
+    color: #7ab800;
+}
+
+#home-for-developer:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.0rem;
+    line-height: 1;
+    padding-right: 1rem;
+    content: "\f0ad";
+    text-decoration: inherit;
+    background: inherit;
+    color: #7ab800;
+}
+
+#home-featured-dataset:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.0rem;
+    line-height: 1;
+    padding-right: 1rem;
+    content: "\f087";
+    text-decoration: inherit;
+    background: inherit;
+    color: #7ab800;
+}
+
+.flex-grid li {
+    list-style: outside none none;
+    margin: 0 -0.5em;
+}
+
+.flex-grid li:before {
+    background: inherit;
+    color: #007eb1;
+    content: "\f054";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-right: 0.8rem;
+    text-decoration: inherit;
+}
+
+#home-tags {
+    margin: 0 3.125em;
+}
+
+#home-tags ul {
+    list-style: none;
+    margin: 1.5em 0 0;
+    padding: 0;
+}
+
+#home-tags ul li {
+    display: inline-block;
+    margin-right: 0.5em;
+    height: 3em;
+}
+
+#home-tags ul li a {
+    padding: 0.5em 0 0.5em 0.5em;
+    background: #e2eef3;
+    text-decoration: none;
+}
+
+#home-tags ul li:last-child a {
+    padding: .5em .5em .5em .5em;
+}
+
+#home-tags ul li a span {
+    padding: .5em;
+    margin-left: .5em;
+    background: #d3e3ee;
+}
+
+#home-tags ul li a:hover {
+    background: #097eaf;
+    color: white;
+    text-decoration: underline;
+}
+
+#home-tags ul li a:hover span {
+    background: #07729e;
+    text-decoration: none !important;
+}
+
+.submit input#feature-search-submit {
+    margin: 0;
+}
+
+#feature-search h2, #feature-search input {
+    line-height: 1rem;
+}
+
+.featured-data .actions {    
+    position: relative;
+    top: 0px;
+}
+
+/* =================================================================================*/
+/* Small screen resets */
+/* --------------------------------------------------------------------------------*/
+
+@media (max-width: 640px) {
+
+    .home #main {
+        margin: 0;
+        min-height: 8.5em;
+    }
+
+    .home #main #feature-search .contents {
+        width: 100%;
+    }
+
+    .home #main #feature-search .contents .search-wrapper {
+        background: #ffffff;
+    }
+
+    .home #main #feature-search .contents #search-query-primary {
+        float: left !important;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 99%;
+    }
+
+    .home #main #feature-search .contents .search-wrapper .submit {
+        float: right !important;
+    }
+
+    .home .main-search p {
+        clear: both;
+        float: none;
+        margin-top: 0.7em;
+        padding-top: 0.7em;
+        text-align: center;
+    }
+
+    .home .notice {
+        background: #f9f9f9;
+        padding-bottom: 0;
+    }
+
+    .home .notice .status {
+        margin-bottom: 0;
+    }
+
+    #home-tags, .data-tags {
+        display: none;
+    }
+    
+/*    #home-tags {
+        margin: 0 !important;
+    }
+
+    #home-tags ul li a {
+        font-size: 1em;
+        padding: 0.3em 0 0.3em 0.3em;
+    }*/
+
+    .home .features .modules .aside,
+    .home .features .modules .aside-inner {
+        padding: 0;
+    }
+
+    .home .features .modules .aside {
+        border-bottom: 1px solid #ececec;
+        padding: 1em 0 1.3em;
+        width: 100%;
+    }
+
+    .home .features .modules .aside li {
+        line-height: 1.3em !important;
+        font-size: 1rem;
+        padding-bottom: 0.5em;
+    }
+
+    .home .features .modules .featured-data {
+        border: 0 none;
+    }
+
+    .home .features .modules .featured-data .feature {
+        margin-left: 3em;
+        padding-bottom: 1em;
+    }
+}

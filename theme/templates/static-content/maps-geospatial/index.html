@@ -1,0 +1,67 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Maps and geospatial") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li class="last-child">{{ _('Maps and geospatial') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Maps and geospatial') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+            <ul>
+                <li class="d1"><h2><a href="/maps-geospatial/qld-globe">
+                        <span class="link-text">Queensland Globe</span>
+                        <img src="/assets/images/qld-globe-thm.jpg" alt="" />
+                    </a></h2>
+                    <p>Install our Google Earth plug-in to view the latest Queensland aerial and satellite imagery, as well as lot and plan, and land tenure information, plus much more.</p>
+                </li>
+                
+                <li class="d1"><h2><a href="http://translink.com.au/about-translink/reporting-and-publications/public-transport-performance-data">
+                        <span class="link-text">Public transport performance data (SEQ)</span>
+                        <img src="/assets/images/translink-icons.jpg" alt="" />
+                    </a></h2>
+                    <p>Public transport performance data for the TransLink south-east Queensland network.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.communitysafety.qld.gov.au/Data/index.asp">
+                        <span class="link-text">Community safety</span>
+                        <img src="/assets/images/community-safety.jpg" alt="" />
+                    </a></h2>
+                    <p>Queensland SES and QFRS locations, districts and boundaries; current bushfire incidents being attended by QFRS and SES Request for Assistance jobs.</p>
+                </li>
+                <li class="d1"><h2><a href="http://qldreconstruction.org.au/interactive-map/">
+                        <span class="link-text">Flood maps</span>
+                        <img src="/assets/images/floodcheck-thumbnail.png" alt="" />
+                    </a></h2>
+                    <p>Flood lines, aerial imagery, and downloadable flood study maps for major flooding events throughout Queensland.</p>
+                </li>
+                <li class="d1"><h2><a href="http://qldspatial.information.qld.gov.au/catalogue/custom/index.page">
+                        <span class="link-text">Queensland Spatial Catalogue</span>
+                        <img src="/assets/images/information-queensland.jpg" alt="" />
+                    </a></h2>
+                    <p>Geospatial and associated data available including maps and datasets.</p>
+                </li>
+                <li class="d1"><h2><a href="http://data.gov.au/">
+                        <span class="link-text">data.gov.au</span>
+                        <img src="/assets/images/data.gov.au.jpg" alt="" />
+                    </a></h2>
+                    <p>Find, access and reuse public datasets from the Australian Government and state and territory governments.</p>
+                </li>
+            </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-datasets-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/dataset"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

@@ -1,0 +1,184 @@
+{#
+Renders a list of related item elements
+
+related_items - A list of related items.
+pkg_id        - A package id for the items used to determine if the edit button should be displayed.
+
+Example:
+  {% snippet "related/snippets/related_list.html", related_items=c.pkg.related, pkg_id=c.pkg.name %}
+  {% snippet "related/snippets/related_item.html", pkg_id=pkg_id, related=related, position=loop.index %}
+
+	{{ reltypeAPI|length }} |
+	{{ reltypeIdea|length }} |
+	{{ reltypePaper|length }}
+#}
+
+{% set reltype = '' %}
+{% set reltypeAPI = [] %}
+{% set reltypeApp = [] %}
+
+{% set reltypeCase = [] %}
+{% set reltypeNews = [] %}
+{% set reltypeResource = [] %}
+{% set reltypeCustom = [] %}
+
+{% set reltypePaper = [] %}
+{% set reltypeVis = [] %}
+{% set reltypeYoutube = [] %}
+
+{% for related in related_items|sort(attribute='type') %}
+	{% if related.type == 'api' %}
+		{% do reltypeAPI.append(related) %}		
+	{% elif related.type == 'application' %}
+		{% do reltypeApp.append(related) %}		
+	{% elif related.type == 'case_study' %}
+		{% do reltypeCase.append(related) %}		
+	{% elif related.type == 'news_article' %}
+		{% do reltypeNews.append(related) %}				
+	{% elif related.type == 'related_resource' %}
+		{% do reltypeResource.append(related) %}		
+	{% elif related.type == 'custom' %}
+		{% do reltypeCustom.append(related) %}		
+	{% elif related.type == 'paper' %}
+		{% do reltypePaper.append(related) %}		
+	{% elif related.type == 'visualization' %}
+		{% do reltypeVis.append(related) %}
+	{% elif related.type == 'youtube' %}
+		{% do reltypeYoutube.append(related) %}		
+	{% endif %}
+{% endfor %}
+
+{% if reltypeAPI|length > 0 %}
+	<div class="aside">
+		<h2>API</h2>
+		<ul>
+			{% for related in reltypeAPI %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+        {% if c.userobj %}
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+        {% endif %}
+	</div>
+{% endif %}
+
+{% if reltypeApp|length > 0 %}
+	<div class="aside">
+		<h2>Application{% if reltypeApp|length > 1 %}s{% endif %}</h2>
+		<ul>
+			{% for related in reltypeApp %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a>
+
+				</li>
+			{% endfor %}
+		</ul>
+        {% if c.userobj %}
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+        {% endif %}
+	</div>
+{% endif %}
+
+{% if reltypeCase|length > 0 %}
+    <div class="aside">
+    	<h2>Case stud{% if reltypeCase|length == 1 %}y{% endif %}{% if reltypeCase|length > 1 %}ies{% endif %}</h2>
+    	{% for related in reltypeCase %}
+
+    		{% if related.image_url|length > 0 %}
+    		<div class="figure">
+    			<a href="{{ related.url }}">
+    				<img height="113" width="284" alt="" src="{{ related.image_url }}">
+    			</a>
+    		</div>
+    		{% endif %}
+    		<h3>{{ related.title }}</h3>
+    		{{ h.render_markdown(related.description) }}
+    		<p class="more"><a href="{{ related.url }}">More…</a></p>
+    	{% endfor %}
+        {% if c.userobj %}
+    	    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+        {% endif %}
+	</div>
+{% endif %}
+
+{% if reltypeNews|length > 0 %}
+	<div class="aside">
+		<h2>News articles</h2>
+		<ul>
+			{% for related in reltypeNews %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+        {% if c.userobj %}
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+        {% endif %}
+	</div>
+{% endif %}
+
+{% if reltypeResource|length > 0 %}
+	<div class="aside">
+		<h2>Related resource{% if reltypeResource|length > 1 %}s{% endif %}</h2>
+		<ul>
+			{% for related in reltypeResource %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+
+	</div>
+{% endif %}
+
+{% if reltypeCustom|length > 0 %}
+	<div class="aside">
+		<h2></h2>
+		<ul>
+			{% for related in reltypeCustom %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+
+	</div>
+{% endif %}
+
+{% if reltypePaper|length > 0 %}
+	<div class="aside">
+		<h2>Paper</h2>
+		<ul>
+			{% for related in reltypePaper %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+
+	</div>
+{% endif %}
+
+{% if reltypeVis|length > 0 %}
+	<div class="aside">
+		<h2>Visualisation{% if reltypeVis|length > 1 %}s{% endif %}</h2>
+		<ul>
+			{% for related in reltypeVis %}
+				<li><a href="{{ related.url }}">{{ related.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+
+	</div>
+{% endif %}
+
+{% if reltypeYoutube|length > 0 %}
+	<div class="aside">
+		{% for related in reltypeYoutube %}
+			<h2>{{ related.title }}</h2>
+			<iframe width="224" height="156" src="{{ related.url }}" frameborder="0" allowfullscreen></iframe>
+			{{ h.render_markdown(related.description) }}
+		{% endfor %}
+
+		    <p class="more"><a href="/dataset/{{ pkg_id }}/related/new" class="">Add another related item</a></p>
+
+	</div>
+{% endif %}

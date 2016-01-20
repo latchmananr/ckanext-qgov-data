@@ -1,0 +1,42 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Categories') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="last-child">{{ _('Categories') }}</li>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block add_action_content %}
+  {% if c.userobj.sysadmin %}
+    <ul><li>{% link_for _('Create a category'), controller='group', action='new' %}</li></li>
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h1>{{ _('Categories') }}</h1>
+  {% block groups_list %}
+    {% if c.page.items or request.params %}
+      {% if c.page.items %}
+        {% snippet "group/snippets/group_list.html", groups=c.page.items %}
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+  {% block page_pagination %}
+    {{ c.page.pager() }}
+  {% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'static-content/snippets/data-datasets-navsection.html' %}
+{% endblock %}
+
+{% block aside %}{% endblock %}
+
+{%- block scripts %}
+  <script type="text/javascript"><!--
+    $( '#nav-site' ).find('[href="/dataset"]').addClass('active');
+  // --></script>
+  {{ super() }}
+{% endblock -%}

@@ -1,0 +1,103 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Other data types") }}{% endblock %}
+
+{% block bodytag %} class="theme-index-with-asides"{% endblock %}
+
+{% block breadcrumb_content %}
+    <li class="last-child">{{ _('Other data types') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Other data types') }}</h1>
+    <div class="section" id="ia">
+        {% trans %}
+            <ul id="flex-grid">
+                <li class="d1"><h2><a href="http://www.dsdip.qld.gov.au/open-data-reform">
+                        <span class="link-text">Land for public recreation</span>
+                        <img src="/assets/images/public-land.jpg" alt="" />
+                    </a></h2>
+                    <p>Location of land available for public recreation.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.dnrm.qld.gov.au/our-department/natural-resources-and-mines-data">
+                        <span class="link-text">Natural resources and mining</span>
+                        <img alt="" src="/assets/images/resources-mines.jpg" />
+                    </a></h2>
+                    <p>A listing of natural resources and mining data and statistics.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.health.qld.gov.au/performance/dental/default.asp">
+                        <span class="link-text">Oral health data</span>
+                        <img alt="" src="/assets/images/oral-health.jpg" />
+                    </a></h2>
+                    <p>Waiting time data for public dental clinics across Queensland.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.health.qld.gov.au/hic/QHID/Hospital_Activity/default.asp">
+                        <span class="link-text">Selected Queensland hospital activity indicators</span>
+                        <img alt="" src="/assets/images/hospital-activity.jpg" />
+                    </a></h2>
+                    <p>Monthly data for selected indicators for public acute hospitals.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.health.qld.gov.au/hic/Peri2010/perinatal10.asp">
+                        <span class="link-text">Perinatal statistics</span>
+                        <img alt="" src="/assets/images/perinatal.jpg" />
+                    </a></h2>
+                    <p>Tables of statistics on all births in Queensland in 2010.</p>
+                </li>
+                <li class="d1"><h2><a href="http://education.qld.gov.au/schools/statistics/">
+                        <span class="link-text">School statistics and information</span>
+                        <img alt="" src="/assets/images/school-yard.jpg" />
+                    </a></h2>
+                    <p>Statistics and information about Queensland state schools and students.</p>
+                </li>
+                
+                <li class="d1"><h2><a href="http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates">
+                        <span class="link-text">Public holidays</span>
+                        <img alt="" src="/assets/images/public-holidays.jpg" />
+                    </a></h2>
+                    <p>A table of Queensland public holiday dates approved and proposed for the next few years.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.communities.qld.gov.au/housing/housing-services/social-housing/data-social-housing">
+                        <span class="link-text">Social housing</span>
+                        <img alt="" src="/assets/images/social-housing.jpg" />
+                    </a></h2>
+                    <p>The number of social housing properties and applications on the housing register in Queensland.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.tmr.qld.gov.au/About-us/Corporate-information/Open-data-datasets.aspx">
+                        <span class="link-text">Licensing, traffic and vehicle registration</span>
+                        <img alt="" src="/assets/images/transport-data.jpg" />
+                    </a></h2>
+                    <p>Driver licence data, traffic census data and information on all current vehicle, trailer and motorcycle registrations.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.ehp.qld.gov.au/data-sets/">
+                        <span class="link-text">Environmental authorities for coal seam gas</span>
+                        <img alt="" src="/assets/images/coal-seam-gas.jpg" />
+                    </a></h2>
+                    <p>A listing of the environmental authorities that have been issued for coal seam gas activities.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.police.qld.gov.au/services/reportsPublications/statisticalReview/crimedata.htm">
+                        <span class="link-text">Queensland crime statistics</span>
+                        <img alt="" src="/assets/images/qps-crime-data.png" />
+                    </a></h2>
+                    <p>Queensland crime statistics for July 1997 to June 2012.</p>
+                </li>
+                <li class="d1"><h2><a href="http://www.qgso.qld.gov.au/products/tables/index.php">
+                        <span class="link-text">Queensland Government Statistician's Office</span>
+                        <img alt="" src="/assets/images/statistics.jpg" />
+                    </a></h2>
+                    <p>Demographic, economic and social data relating to the state of Queensland.</p>
+                </li>
+            </ul>
+        {% endtrans %}
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-datasets-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/dataset"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

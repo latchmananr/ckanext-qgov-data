@@ -1,0 +1,85 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Travelling around Brisbane on public transport just got easier | Case studies") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/case-studies/">{{ _('Travelling around Brisbane on public transport just got easier') }}</a></li>
+    <li class="last-child">{{ _('Sharing Queensland wildlife data') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Travelling around Brisbane on public transport just got easier') }}</h1>
+
+	<p>The Brisbane Bus and Train app uses Queensland open data to  provide users with arrival times and stop locations of Brisbane buses and  trains. The app also allows users to save bus/train stops to their ‘favourites’  for easy access and usability. Other useful features of the app include:</p>
+	<ul>
+		<li>An overview of all currently running buses/trains  for a particular route;</li>
+		<li>The ability to tap and hold the map to find bus  stops near the area;</li>
+		<li>Gives directions to a user’s desired bus stop;</li>
+		<li>Displays the arrival time of the next three  buses;</li>
+		<li>View recent service updates published on the  Translink website.</li>
+	</ul>
+	<p>Brisbane Bus and Train has been featured on Gizmodo  Australia’s Top 20 most popular Windows Phone apps and Translink’s featured app  showcase.</p>
+	
+	<h2>The data</h2>
+	<p>Brisbane Bus and Train uses multiple Queensland open data  sets including: </p>
+	<ul>
+		<li>Translink OPIA API and Go card data to plan  trips; </li>
+		<li>the Translink GTFS dataset to enable users to  favourite bus/train stops. </li>
+		<li>TransLink real time data</li>
+	</ul>
+	
+	<h2>The user</h2>
+	<p>Brisbane bus is available for download on iTunes, Google  Play Store and Windows Phone. </p>
+	<p>The app’s interface is sleek and simple, making it easy to  use for frequent commuters and tourists.</p>
+	
+	<h2>The benefits</h2>
+	<p>Brisbane Bus and Train developer Yan Sun says the app will  make it easier for commuters and tourists to use public transport in  Brisbane. </p>
+
+	<div class="figure">
+	    <blockquote class="pull-quote">
+			<p>“Brisbane Bus and Train helps commuters save time and energy  through its user friendly and informative interface.”</p>  
+			<p>“By using Queensland  Government open data, Brisbane Bus and Train does the work for users, allowing  commuters to quickly check the status of the bus, train or route they need.”</p>
+		</blockquote>
+	</div>
+
+	<h2>Download the app</h2>
+	<p>Download the Brisbane Bus and Train app for:</p>
+	<ul>
+		<li><a href="https://itunes.apple.com/BE/app/id909277744?mt=8&amp;ign-mpt=uo%3D4">Apple iOS</a></li>
+		<li><a href="https://play.google.com/store/apps/details?id=com.BrisbaneBus.BrisbaneBusAndroid">Google Android</a></li>
+		<li><a href="http://www.windowsphone.com/en-au/store/app/brisbane-bus-and-train-pro/7dd8f75c-2e63-4d0b-8dbd-aa9e1f09975f">Windows Mobile</a> </li>
+	</ul>
+	
+	<p>&nbsp;</p>
+{% endblock %}
+
+{% block aside %}
+	<div class="aside">
+		<h2>Download the app</h2>
+		<p>Download the Brisbane Bus and Train app for:</p>
+		<ul>
+			<li><a href="https://itunes.apple.com/BE/app/id909277744?mt=8&amp;ign-mpt=uo%3D4">Apple iOS</a></li>
+			<li><a href="https://play.google.com/store/apps/details?id=com.BrisbaneBus.BrisbaneBusAndroid">Google Android</a></li>
+			<li><a href="http://www.windowsphone.com/en-au/store/app/brisbane-bus-and-train-pro/7dd8f75c-2e63-4d0b-8dbd-aa9e1f09975f">Windows Mobile</a> </li>
+		</ul>
+
+		<p><img src="/assets/images/case-studies/brisbane-bus-train-app1.jpg" alt="" /></p>
+		<p><img src="/assets/images/case-studies/brisbane-bus-train-app2.jpg" alt="" /></p>
+	</div>
+	{% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-case-studies-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+	<script type="text/javascript"><!--
+		(function( $ ) {
+			'use strict';
+
+			$( '#nav-site' ).find('[href="/case-studies"]').addClass('active'); 
+		}( jQuery ));
+	// --></script>
+{% endblock -%}

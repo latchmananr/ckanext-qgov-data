@@ -1,0 +1,93 @@
+#nav-site .max-width {
+    padding: 0;
+}
+
+#nav-site .max-width ul {
+    margin: 0 1.125em;
+}
+
+.home #main-sections {
+    margin: 0 auto;
+    width: 65%;
+}
+
+#search-form #search-query {
+    font-size: 1em;
+    padding: 0.3em 1.33em 0.5em;
+}
+
+.home #main #feature-search {
+    height: 10em;
+}
+
+.home #main #feature-search .section-header,
+.home #main #feature-search .contents {
+    margin: 2.8125em 0 0;
+}
+
+.home #main #feature-search .section-header,
+.home #main #feature-search .section-header h2 {
+    width: 22% !important;
+}
+
+.home #main #feature-search .contents {
+    width: 55%;
+}
+
+.home #main #feature-search .contents .search-wrapper {
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.home #main #feature-search .contents .search-wrapper .submit {
+    float: right !important;
+}
+
+.home #main #feature-search .contents #search-query-primary {
+    float: left !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 99%;
+}
+
+.home #main #feature-search .contents #search-query-primary:before {
+    background: transparent !important;
+}
+
+.home #main #feature-search p {
+    clear: both;
+    float: none;
+    margin-top: 0.6em;
+    padding-top: 0.6em;
+    text-align: center;
+}
+
+.home .notice {
+    padding: 1em 0 0;
+}
+
+.home .notice .status {
+    margin-bottom: 0;
+}
+
+.home .features .modules .aside,
+.home .features .modules .aside-inner {
+    padding: 0;
+}
+
+.home .features .modules .aside {
+    width: 33%;
+}
+
+.home .features .modules .featured-data {
+    width: 30%;
+}
+
+.home .features .modules .aside-inner {
+    width: 85%;
+}
+
+.home .features .modules .featured-data .aside-inner {
+    width: 100%;
+}

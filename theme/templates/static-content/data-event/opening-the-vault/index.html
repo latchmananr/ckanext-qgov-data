@@ -1,0 +1,68 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Opening the Vault: Open Data in Queensland") }}{% endblock %}
+
+{% block breadcrumb_content %}
+    <li><a href="/data-event">{{ _('Events') }}</a></li>
+    <li class="last-child">{{ _('Opening the Vault: Open Data in Queensland') }}</li>
+{% endblock %}
+
+{% block primary %}
+    <h1>{{ _('Opening the Vault: Open Data in Queensland') }}</h1>
+    {% trans %}
+        <p>Opening the Vault: Open Data in Queensland was held on Wednesday 3 April 2013 at The Edge, Stanley Place, South Brisbane. Ideas were discussed and shared on how government data could be turned into practical applications for everyday use.</p>
+        <p>The interactive forum program included panel sessions, guest speakers, case study presentations, networking opportunities and open data exhibits.</p>
+        <p>Attendees included delegates from industry, development, government, interest groups and the general public.</p>
+
+        <h2>Competition information</h2>
+        <p>Submissions were based on ideas or pitches for creative ways that government data could be developed into applications that benefit Queensland. This competition was the start of a conversation around the Queensland Government’s ongoing Open Data revolution.</p>
+
+        <h3>Finalists</h3>
+        <p>Finalists had the opportunity to share their ideas in short 3-minute presentations at the Opening the Vault: Open Data in Queensland event. Pitches were voted on by event attendees from industry, development, government, interest groups and the general public.</p>
+        <p>Finalists were awarded cash prizes to help turn their ideas into practical applications.</p>
+
+        <table>
+            <tr>
+                <td><strong>1st  prize</strong></td>
+                <td>$2,500</td>
+                <td>Andy  Stewart—Road trip</td>
+            </tr>
+            <tr>
+                <td><strong>2nd  prize</strong></td>
+                <td>$1,000</td>
+                <td>Kerry  Raymond—Skeletons out of the cupboard</td>
+            </tr>
+            <tr>
+                <td><strong>3rd  prize</strong></td>
+                <td>$750</td>
+                <td>Dan  Sowter—When will help arrive?</td>
+            </tr>
+            <tr>
+                <td><strong>4th  prize</strong></td>
+                <td>$500</td>
+                <td>Brendan  Cosman—Collecting honest feedback and saving everyone time: online delivery of Queensland school enrolment management plans</td>
+            </tr>
+            <tr>
+                <td><strong>5th  prize</strong></td>
+                <td>$250</td>
+                <td>Brent  Phillips—Qld parks and forests: Get  outside...</td>
+            </tr>
+        </table>
+    {% endtrans %}
+
+{% endblock %}
+
+{% block aside %}
+    {% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-event-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}
+    <script type="text/javascript"><!--
+      $( '#nav-site' ).find('[href="/data-event"]').addClass('active');
+    // --></script>
+    {{ super() }}
+{% endblock -%}

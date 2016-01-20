@@ -1,0 +1,70 @@
+{% extends "page.html" %}
+
+{% set user = c.user_dict %}
+
+{% block subtitle %}{{ user.display_name }} - {{ _('Users') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  {{ h.build_nav('user_index', _('Users')) }}
+  {{ h.build_nav('user_datasets', user.display_name|truncate(35), id=user.name) }}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('user_datasets', _(h.portal_type('uss')), id=user.name) }}
+  {{ h.build_nav_icon('user_activity_stream', _('Activity stream'), id=user.name) }}
+{% endblock %}
+
+{% block aside %}
+<div class="aside">
+    {% block secondary_content_inner %}
+      <h2 class="heading">{{ user.display_name }}
+      {% if h.check_access('user_update', user) %}
+        <small>({% link_for _('edit profile'), controller='user', action='edit', id=user.name %})</small>
+      {% endif %}
+      </h2>
+      <div class="nums">
+        <dl>
+          <dt>{{ _('Followers') }}</dt>
+          <dd>{{ h.SI_number_span(user.num_followers) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _(h.portal_type('uss')) }}</dt>
+          <dd>{{ h.SI_number_span(user.number_administered_packages) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _('Edits') }}</dt>
+          <dd>{{ h.SI_number_span(user.number_of_edits) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _('Username') }}</dt>
+          <dd>{{ user.name }}</dd>
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt>{{ _('Email (private)') }}</dt>
+            <dd>{{ user.email }}</dd>
+          </dl>
+        {% endif %}
+        <dl>
+          <dt>{{ _('User since') }}</dt>
+          <dd>{{ h.render_datetime(user.created) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _('State') }}</dt>
+          <dd>{{ user.state }}</dd>
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt class="key">{{ _('Private API key') }}</dt>
+            <dd class="value"><code>{{ user.apikey }}</code></dd>
+          </dl>
+        {% endif %}
+        </div>
+      {% if c.is_myself == false %}
+        <div class="follow_button">
+          {{ h.follow_button('user', user.id) }}</li>
+        </div>
+      {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+/* IE styles for data.qld.gov.au */
+
+
+/* reset the icons indent */
+.oldIE #home-top-tags:before {
+    margin-right: 0.33em;
+}
+
+.oldIE .home .features .modules .aside h2:before {
+    margin-right: 0.6em;
+}
+
+/* reset the modules ul indent */
+.oldIE .home .features .modules ul {
+    margin-left: 1.5em;
+}

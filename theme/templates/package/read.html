@@ -1,0 +1,61 @@
+{% extends "package/read_base.html" %}
+
+{% set pkg = c.pkg_dict %}
+
+{% block primary_content_inner %}
+  {{ super() }}
+  {% block package_description %}
+    {% if pkg.private %}
+      <span class="dataset-private label label-inverse pull-right">
+        <i class="icon-lock"></i>
+        {{ _('Private') }}
+      </span>
+    {% endif %}
+
+    <h1>
+      {% block page_heading %}
+        {{ pkg.title or pkg.name }}
+        {% if pkg.state.startswith('draft') %}
+          [{{ _('Draft') }}]
+        {% endif %}
+      {% endblock %}
+
+    </h1>
+
+    {% if pkg.state == 'deleted' %}
+      <div class="status warn">
+        <h2>This {{ h.portal_type('ls') }} has been removed</h2>
+        <p>Please contact the <a href="mailto:{{ pkg.author_email }}">{{ h.portal_type('ls') }} custodian</a>  for further information.<p>
+      </div>
+    {% endif %}
+
+    {% block package_notes %}
+      {% if c.pkg_notes_formatted and pkg.state != 'deleted' %}
+        <div class="notes embedded-content">
+          {{ c.pkg_notes_formatted }}
+        </div>
+      {% endif %}
+    {% endblock %}
+    {# FIXME why is this here? seems wrong #}
+    <span class="insert-comment-thread"></span>
+  {% endblock %}
+
+  {% block package_resources %}
+    {% if pkg.state != 'deleted' %}
+      {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+    {% endif %}
+  {% endblock %}
+
+  {% block package_tags %}
+    {% if pkg.state != 'deleted' %}
+      {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+    {% endif %}
+  {% endblock %}
+
+  {% block package_additional_info %}
+    {% if pkg.state != 'deleted' %}
+      {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+      {% snippet "package/snippets/disclaimer.html" %}  
+    {% endif %}
+  {% endblock %}
+{% endblock %}

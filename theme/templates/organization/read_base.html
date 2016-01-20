@@ -1,0 +1,34 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ c.group_dict.display_name }} - {{ _('Organizations') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
+  <li class="active">{% link_for c.group_dict.display_name|truncate(35), controller='organization', action='read', id=c.group_dict.name %}</li>
+{% endblock %}
+
+{% block page_header %}
+  <h1>{{ c.group_dict.display_name }}</h1>
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet 'static-content/snippets/data-datasets-navsection.html' %}
+{% endblock %}
+
+{% block aside %}{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {% include "organization/snippets/feeds.html" %}
+{% endblock %}
+
+{%- block scripts %}
+  <script type="text/javascript"><!--
+    (function( $ ) {
+      'use strict';
+      $( "#nav-section li a[href*='/organization']" ).parent().attr('class', 'current-page');
+
+    }( jQuery ));
+  // --></script>
+  {{ super() }}
+{% endblock -%}

@@ -1,0 +1,77 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _("Announcements") }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="last-child">{{ _('Announcements') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+    <h1>{{ _('Announcements') }}</h1>
+
+    <h2 id="web-address-changes">Queensland Government data web address changes</h2>
+
+    <p>Due to department changes, some Queensland Government data web addresses have been updated to their new department names.</p>
+
+    <p>If you have bookmarked links, these may no longer work and will need to be updated.</p>
+
+    <p>To find datasets, you can enter keywords in the search bar or use the left menu to search for the dataset by category, organisation, or tags.</p>
+
+    <p>The departments are listed on the <a href="/organization">organisations</a> page, the changes are sumarised below.</p>
+
+    <table>
+        <caption>Department name changes</caption>
+        <thead>
+            <th>From</th>
+            <th>To</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aboriginal and Torres Strait Islander and Multicultural Affairs</td>
+                <td>Aboriginal and Torres Strait Islander Partnerships</td>
+            </tr>
+            <tr>
+                <td>Agriculture, Fisheries and Forestry</td>
+                <td>Agriculture and Fisheries</td>
+            </tr>
+            <tr>
+                <td>Education, Training and Employment</td>
+                <td>Education and Training</td>
+            </tr>
+            <tr>
+                <td>Local Government, Community Recovery and Resilience</td>
+                <td>Infrastructure, Local Government and Planning</td>
+            </tr>
+            <tr>
+                <td>National Parks, Recreation, Sport and Racing</td>
+                <td>National Parks, Sport and Racing</td>
+            </tr>
+            <tr>
+                <td>Queensland Treasury and Trade</td>
+                <td>Queensland Treasury</td>
+            </tr>
+            <tr>
+                <td>Science, Information Technology, Innovation and the Arts</td>
+                <td>Science, Information Technology and Innovation</td>
+            </tr>
+            <tr>
+                <td>State Development, Infrastructure and Planning</td>
+                <td>State Development</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block secondary_content %}
+    {% snippet 'static-content/snippets/data-navsection.html' %}
+{% endblock %}
+
+{%- block scripts %}{% endblock -%}
+
+{% block aside %}
+    {% if h.portal_type('site') == 'data' %}
+        {% snippet 'static-content/snippets/data-event-join-conversation.html' %}
+    {% endif %}
+{% endblock %}

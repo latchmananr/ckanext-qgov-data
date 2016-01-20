@@ -1,0 +1,12 @@
+{% set type = group.type or 'group' %}
+{% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
+<tr>
+  <td><a href="{{ url }}">{{ group.display_name }}</a></td>
+  <td>
+    {% if group.packages %}
+    <span>{{ group.packages }}</span>
+    {% else %}
+    <span>{{ _('0') }}</span>
+    {% endif %}
+  </td>
+</tr>
